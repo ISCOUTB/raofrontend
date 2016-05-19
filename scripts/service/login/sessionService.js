@@ -1,5 +1,4 @@
 'use strict';
-
 raoweb.factory('sessionService', ['$http', function($http){
 	return{
 		set:function(key,value){
@@ -9,7 +8,6 @@ raoweb.factory('sessionService', ['$http', function($http){
 			return sessionStorage.getItem(key);
 		},
 		destroy:function(key){
-			console.log("Destroy-key: ",key);
 			return sessionStorage.removeItem(key);
 		}
 	};

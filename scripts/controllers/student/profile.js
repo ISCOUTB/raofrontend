@@ -1,7 +1,6 @@
 'use strict';
 angular.module('raoweb')
   .controller('studentProfile', ['$scope','loginService','$http', '$location','$stateParams','sessionService', 'profileService','$rootScope','courseviewService', function($scope,loginService, $http,$location,$stateParams, sessionService,  profileService,$rootScope,courseviewService){
-
     if(sessionStorage.length===0){
         $location.path('/login');
     }else{
@@ -18,8 +17,4 @@ angular.module('raoweb')
         }
         courseviewService.studentstatistics($scope.user,$scope.course);
     }
-
-
-
-      
 }]);

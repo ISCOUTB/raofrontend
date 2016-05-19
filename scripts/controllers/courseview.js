@@ -1,5 +1,5 @@
 angular.module('raoweb').
-controller('courseViewCtrl', function ($scope, $location,   $stateParams,courseviewService,sessionService, $state) {
+controller('courseViewCtrl', ['$scope', '$location','$stateParams','courseviewService','sessionService','$state', function ($scope, $location,   $stateParams,courseviewService,sessionService, $state) {
         $scope.course = $stateParams.course;
         $scope.user = sessionService.get('user');
         if(sessionStorage.length===0){
@@ -9,20 +9,13 @@ controller('courseViewCtrl', function ($scope, $location,   $stateParams,coursev
             courseviewService.teachercourseview($scope.course);
             $state.go('courseview',{course:$scope.course})
             courseviewService.getattendance($scope.course);
-            
-
         }
         else{
             courseviewService.studentcourseview($scope.course);    
             $state.go('studentcourseview',{course:$scope.course})
             courseviewService.studentstatistics($scope.user,$scope.course);
-            
         }
-        
         $scope.modalStatistics = function(){
             $('#modalStatistics').openModal();
         };
-        
-        
-
-});
+}]);

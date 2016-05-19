@@ -9,7 +9,6 @@ raoweb
         if (sessionService.get('type') == 'teacher'){ 
             courselistService.teachercourses(); 
             $location.path("/dashboard/teacher/home"); 
-
         } 
         else{ 
             courselistService.studentcourses(); 

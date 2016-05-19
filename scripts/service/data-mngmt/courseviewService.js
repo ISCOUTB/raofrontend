@@ -1,12 +1,9 @@
 raoweb.factory('courseviewService',function($http,$rootScope,$location){
-    
     return{
         teachercourseview:function(course){
             $http({
-                //http://raoapi.utbvirtual.edu.co:8082
                 url: "http://raoapi.utbvirtual.edu.co:8082/course/"+course+"/students?username="+ sessionStorage.getItem('user')+"&token="+sessionStorage.getItem('token'), 
                 method: "GET",
-                //params: {username: "T00010915", token:"SGRh6AoMQMUB1GuIVbulDHym3gORp91wB9EyoNmF"}
                 }).success(function (response) {
                 var msg  = "El curso con NRC "+course+" no existe"
                 if (response != msg )
@@ -24,8 +21,11 @@ raoweb.factory('courseviewService',function($http,$rootScope,$location){
                     Materialize.toast(msgtxt, 5000, 'rounded');
                     $location.path("/dashboard/teacher/homeerror"); 
                 }
-            }).catch(function(msg){console.log("mensaje", msg)});//hacer algo aqui
-            
+            }).catch(function(msg){
+                var msgtxt = 'Las credenciales no concuerdan. Ingrese nuevamente.';
+                Materialize.toast(msgtxt, 5000, 'rounded');
+                $location.path("/login"); 
+            });    
        },
         studentcourseview:function(course){
              $http({
@@ -36,7 +36,11 @@ raoweb.factory('courseviewService',function($http,$rootScope,$location){
                     $rootScope.nrc = $rootScope.courses.nrc;
                     $rootScope.subject = $rootScope.courses.subject;
                     $rootScope.students = $rootScope.courses.students;
-            }).catch(function(msg){console.log("mensaje", msg)}); //hacer algo aqui
+            }).catch(function(msg){
+                var msgtxt = 'Las credenciales no concuerdan. Ingrese nuevamente.';
+                Materialize.toast(msgtxt, 5000, 'rounded');
+                $location.path("/login"); 
+            });
         },
         getattendance:function(course){
             $rootScope.students_names = new Array();

@@ -1,3 +1,4 @@
+'use strict';
 raoweb.factory('profileService',function($http,$rootScope){
     return{
         studentprofile:function(user){
@@ -12,7 +13,11 @@ raoweb.factory('profileService',function($http,$rootScope){
                     $rootScope.lastnames = $rootScope.studentprofile.lastnames;
                     $rootScope.program = $rootScope.studentprofile.program;
                     $rootScope.email = $rootScope.studentprofile.email;
-            })
+            }).catch(function(msg){
+                var msgtxt = 'Las credenciales no concuerdan. Ingrese nuevamente.';
+                Materialize.toast(msgtxt, 5000, 'rounded');
+                $location.path("/login"); 
+            });
         },
         studentstats:function(user, course){
             $http({
@@ -38,13 +43,11 @@ raoweb.factory('profileService',function($http,$rootScope){
                   $rootScope.department = $rootScope.teacherprofile.department;
                   $rootScope.school = $rootScope.teacherprofile.school;
                   $rootScope.email = $rootScope.teacherprofile.email;
-
+            }).catch(function(msg){
+                var msgtxt = 'Las credenciales no concuerdan. Ingrese nuevamente.';
+                Materialize.toast(msgtxt, 5000, 'rounded');
+                $location.path("/login"); 
             });
-        
         }
     }
-})
-/*
-
-                           
-                    */
+});

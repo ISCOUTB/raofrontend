@@ -12,15 +12,11 @@
                     <div class="collection">	
                         <div class="collection collection-item avatar">
                             <div class="col s12 m8 l8 left collectiondiv">
-                                <!--<img src="images/flat-avatar.png" alt="" class="circle">-->
                                 <i class="fa fa-user circle red"></i>
-
                                 <form action="#">		
                                     <input ng-click="toggleSelection(s.id, s.names, $index)" class="switch filled-in" type="checkbox" id="students{{$index + 1}}"> 
-
                                     <label for="students{{$index + 1}}" class="black-text"> 
                                         <p>{{s.names}} {{s.lastnames}} <br>
-
                                             {{s.id}}</p>
                                     </label>
                                 </form>

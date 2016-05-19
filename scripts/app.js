@@ -1,20 +1,9 @@
 'use strict';
-
-/**
- * @ngdoc overview
- * @name raoweb
- * @description
- * # raoweb
- *
- * Main module of the application.
- */
 var raoweb = angular.module('raoweb', ['ui.router', 'ngAnimate']);
-
 raoweb.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.when('/teacher/home', '/dashboard/teacher/home');
     $urlRouterProvider.when('/student/home', '/dashboard/student/home');
     $urlRouterProvider.otherwise('/login');
-
     $stateProvider
             .state('login', {
                 url: '/login',
@@ -81,30 +70,6 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
                 templateUrl: 'views/login.html',
                 controller: 'logoutctrl'
             })
-//            .state('errornoteacher', {
-//                url: '/reports',
-//                parent: 'dashboard',
-//                templateUrl: 'views/dashboard/reports.html'
-//            })
-//            .state('errornostudent', {
-//                url: '/reports',
-//                parent: 'dashboard',
-//                templateUrl: 'views/dashboard/reports.html'
-//            })
-//            .state('dashboard.homeerrors', {
-//                url: '/teacher/homeerror',
-//                templateUrl: 'views/dashboard/error/nocourse.html',
-//            }) 
-//            .state('dashboard.studenterrors', {
-//                url: '/teacher/studenterror',
-//                templateUrl: 'views/dashboard/error/nostudent.html',
-//            })
-//            .state('reports', {
-//                url: '/reports',
-//                parent: 'dashboard',
-//                templateUrl: 'views/dashboard/reports.html'
-//            });
-
 });
 
 
