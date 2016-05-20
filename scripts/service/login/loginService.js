@@ -39,7 +39,7 @@ raoweb.factory('loginService', function ($http, $location, sessionService) {
                 sessionService.destroy('token');
                 sessionService.destroy('type');
             });
-            $location.path("/login")
+            $location.path("/login");
         }
     }
 

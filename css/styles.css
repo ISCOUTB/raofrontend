@@ -8115,6 +8115,46 @@ body {
   background-color: #0E7049;
 }
 
+/***** Warning Box *****/
+.warning-box {
+  background: #E0717C;
+  color: #F4F7FE;
+  text-align: center;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 25% auto;
+}
+
+.warning-box i {
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+
+@media (max-width: 459px) {
+  .warning-box {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 460px) and (max-width: 767px) {
+  .warning-box {
+    font-size: 1.2em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .warning-box {
+    font-size: 1.3em;
+  }
+}
+
+@media (min-width: 993px) {
+  .warning-box {
+    font-size: 1.4em;
+  }
+}
+
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -8390,6 +8430,12 @@ and open the template in the editor.
 
 .home .asistenciadiv {
   margin: 5px 0;
+}
+
+.home #container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 @media (min-width: 768px) and (max-width: 992px) {

@@ -2,10 +2,10 @@ angular.module('raoweb').
 controller('courseViewCtrl', ['$scope', '$location','$stateParams','courseviewService','sessionService','$state', function ($scope, $location,   $stateParams,courseviewService,sessionService, $state) {
         $scope.course = $stateParams.course;
         $scope.user = sessionService.get('user');
-        if(sessionStorage.length===0){
+        if(sessionStorage.length === 0){
             $location.path('/login');
         }
-        if (sessionService.get('type') == 'teacher'){
+        if (sessionService.get('type') === 'teacher'){
             courseviewService.teachercourseview($scope.course);
             $state.go('courseview',{course:$scope.course})
             courseviewService.getattendance($scope.course);

@@ -2,11 +2,12 @@ raoweb.factory('courseviewService',function($http,$rootScope,$location){
     return{
         teachercourseview:function(course){
             $http({
-                url: "http://raoapi.utbvirtual.edu.co:8082/course/"+course+"/students?username="+ sessionStorage.getItem('user')+"&token="+sessionStorage.getItem('token'), 
-                method: "GET",
+                    url: "http://raoapi.utbvirtual.edu.co:8082/course/"+course+"/students?username="+ sessionStorage.getItem('user')+"&token="+sessionStorage.getItem('token'), 
+                    method: "GET",
                 }).success(function (response) {
-                var msg  = "El curso con NRC "+course+" no existe"
-                if (response != msg )
+                    console.log(response);
+                var msg  = "El curso con NRC "+course+" no existe";
+                if (response !== msg )
                 {
                     $rootScope.json = response;
                     $rootScope.nrc = $rootScope.json.nrc;
@@ -17,14 +18,13 @@ raoweb.factory('courseviewService',function($http,$rootScope,$location){
                     $rootScope.estudentID = $rootScope.json.students.id;
                 }
                 else{
-                     var msgtxt = 'Verifique el nrc del curso';
+                    var msgtxt = 'Verifique el nrc del curso';
                     Materialize.toast(msgtxt, 5000, 'rounded');
                     $location.path("/dashboard/teacher/homeerror"); 
                 }
             }).catch(function(msg){
                 var msgtxt = 'Las credenciales no concuerdan. Ingrese nuevamente.';
                 Materialize.toast(msgtxt, 5000, 'rounded');
-                $location.path("/login"); 
             });    
        },
         studentcourseview:function(course){
