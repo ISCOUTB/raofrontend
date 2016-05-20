@@ -13,6 +13,5 @@ angular.module('raoweb')
         var msgtxt = 'Las credenciales no concuerdan. Ingrese nuevamente.';
         Materialize.toast(msgtxt, 5000, 'rounded');
         $location.path("/login");
-        $location.path('/login');
     }
 }]);

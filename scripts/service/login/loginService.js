@@ -15,11 +15,12 @@ raoweb.factory('loginService', function ($http, $location, sessionService) {
                     sesionName = data.username;
                     sesionToken = user_id;
                     sesionType = user_type;
-                    if (user_type === "teacher")
+                    if (user_type === "teacher"){
                         scope.msgtxt = 'Datos del profesor correctos';
-                    else
+                    }
+                    else{
                         scope.msgtxt = 'Datos del estudiante correctos';
-
+                    }
                     Materialize.toast(scope.msgtxt, 5000, 'rounded');
                     if (sessionStorage.getItem('type') === 'student') {
                         $location.path('/dashboard/student/home');
@@ -38,6 +39,7 @@ raoweb.factory('loginService', function ($http, $location, sessionService) {
                 sessionService.destroy('token');
                 sessionService.destroy('type');
             });
+            $location.path("/login")
         }
     }
 

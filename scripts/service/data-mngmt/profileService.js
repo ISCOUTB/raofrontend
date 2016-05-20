@@ -30,7 +30,6 @@ raoweb.factory('profileService',function($http,$rootScope){
             })
         },
         teacherprofile:function(){
-
             $http({
                 url: "http://raoapi.utbvirtual.edu.co:8082/teacher/"+sessionStorage.getItem('user')+"?username="+ sessionStorage.getItem('user')+"&token="+sessionStorage.getItem('token'), 
                 method: "GET",

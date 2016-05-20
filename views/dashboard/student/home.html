@@ -1,8 +1,7 @@
-
-<div class="container home">
-    <div class="row">
-        <div class="col s12 m9 offset-m1 l8 offset-l1">
-            <div ng-controller="courseCtrl"> 
+<div> 
+    <div ng-style="show" class="container home">
+        <div class="row">
+            <div class="col s12 m9 offset-m1 l8 offset-l1">
                 <div id="teachercourses" >
                     <h2>Cursos</h2>
                     <div ng-repeat="c in courses" >
@@ -20,6 +19,14 @@
             </div>
         </div>
     </div>
+    <div ng-style="hide" class="container home">
+        <div class="row">
+            <div class="col s12 m9 offset-m1 l8 offset-l1">
+                <div>
+                    <h1>Ups!  Algo ocurrio</h1> 
+                    <h3>No pudimos cargar sus cursos, verifique que tenga cursos matriculados.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
