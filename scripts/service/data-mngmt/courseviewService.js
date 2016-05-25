@@ -100,7 +100,7 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location) {
                         }
                     }
                 }
-
+                $('#modalStatistics').openModal();
                 $(function () {
                     $('#container').highcharts({
                         chart: {

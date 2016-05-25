@@ -1,19 +1,31 @@
 'use strict';
 var raoweb = angular.module('raoweb', ['ui.router', 'ngAnimate']);
 raoweb.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.when('/teacher/home', '/dashboard/teacher/home');
-    $urlRouterProvider.when('/student/home', '/dashboard/student/home');
+//    $urlRouterProvider.when('/teacher/home', '/dashboard/teacher/home');
+//    $urlRouterProvider.when('/student/home', '/dashboard/student/home');
     $urlRouterProvider.otherwise('/login');
     $stateProvider
             .state('login', {
                 url: '/login',
                 templateUrl: 'views/login.html',
-                controller: 'LoginCtrl'
+                controller: 'loginCtrl'
             })
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'views/dashboard.html',
-                controller: 'DashboardCtrl'
+                controller: 'dashboardCtrl'
+            })
+            .state('home', {
+                url: '/teacher/home',
+                parent: 'dashboard',
+                templateUrl: 'views/dashboard/home.html',
+                controller: 'courseCtrl'
+            })
+            .state('studenthome', {
+                url: '/student/home',
+                parent: 'dashboard',
+                templateUrl: 'views/dashboard/student/home.html',
+                controller: 'courseCtrl'
             })
             .state('courseview', {
                 url: '/teacher/courseview/:course',
@@ -22,35 +34,16 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
                 controller: 'courseViewCtrl'
             })
             .state('studentlist', {
-                url: '/teacher/studentlist?course',
+                url: '/teacher/studentlist/:course',
                 parent:'dashboard',
                 templateUrl: 'views/dashboard/studentlist.html',
                 controller: 'studentsByCourseCtrl'
-
             })
             .state('studentprofile', {
                 url: '/teacher/studentprofile/:user/course/:course',
                 parent:'dashboard',
                 templateUrl: 'views/dashboard/student/profile.html',
                 controller: 'studentProfile'
-            })
-            .state('home', {
-                url: '/teacher/home',
-                parent: 'dashboard',
-                templateUrl: 'views/dashboard/home.html',
-                controller: 'courseCtrl'
-            })
-            .state('courselist', {
-                url: '/teacher/courselist',
-                parent:'dashboard',
-                templateUrl: 'views/dashboard/courselist.html',
-                controller: 'courseCtrl'
-            })
-            .state('studenthome', {
-                url: '/student/home',
-                parent: 'dashboard',
-                templateUrl: 'views/dashboard/student/home.html',
-                controller: 'courseCtrl'
             })
             .state('studentcourseview', {
                 url: '/student/courseview/:course',

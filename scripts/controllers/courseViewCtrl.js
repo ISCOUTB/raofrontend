@@ -8,7 +8,6 @@ controller('courseViewCtrl', ['$scope', '$location','$stateParams','courseviewSe
         if (sessionService.get('type') === 'teacher'){
             courseviewService.teachercourseview($scope.course);
             $state.go('courseview',{course:$scope.course})
-            courseviewService.getattendance($scope.course);
         }
         else{
             courseviewService.studentcourseview($scope.course);    
@@ -16,6 +15,6 @@ controller('courseViewCtrl', ['$scope', '$location','$stateParams','courseviewSe
             courseviewService.studentstatistics($scope.user,$scope.course);
         }
         $scope.modalStatistics = function(){
-            $('#modalStatistics').openModal();
+            courseviewService.getattendance($scope.course);
         };
 }]);
