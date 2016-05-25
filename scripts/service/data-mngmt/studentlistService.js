@@ -33,7 +33,7 @@ raoweb.factory('studentlistService',function($http,$rootScope,$location,sessionS
         attendancechange:function(){
             $rootScope.toggleSelection = function toggleSelection(id,stat,ind) {            
                 if ($rootScope.attendance[ind]){
-                    if ($rootScope.attendance[ind].attendance == 0){
+                    if ($rootScope.attendance[ind].attendance === 0){
                         $rootScope.attendance[ind].attendance = 1;
                     }
                     else{
