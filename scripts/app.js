@@ -10,11 +10,19 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
                 templateUrl: 'views/login.html',
                 controller: 'loginCtrl'
             })
+            .state('logout', {
+                url: '/logout',
+                parent: 'dashboard',
+                templateUrl: 'views/login.html',
+                controller: 'logoutctrl'
+            })
+            //Base html
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'views/dashboard.html',
                 controller: 'dashboardCtrl'
             })
+            //Home: course list
             .state('home', {
                 url: '/teacher/home',
                 parent: 'dashboard',
@@ -27,6 +35,7 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
                 templateUrl: 'views/dashboard/student/home.html',
                 controller: 'courseCtrl'
             })
+            
             .state('courseview', {
                 url: '/teacher/courseview/:course',
                 parent:'dashboard',
@@ -57,12 +66,7 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
                 templateUrl: 'views/dashboard/student/studentview.html',
                 controller: 'studentViewCtrl'
             })
-            .state('logout', {
-                url: '/logout',
-                parent: 'dashboard',
-                templateUrl: 'views/login.html',
-                controller: 'logoutctrl'
-            })
+            
 });
 
 
