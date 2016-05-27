@@ -49,6 +49,8 @@ raoweb.factory('courselistService', function ($http, $rootScope, $location, logi
         }
 
         if (response != msg && response != msg2 && response != msg3) {
+            var msgtxt ="hola";
+            swal(msgtxt, "", "info");
             $rootScope.json = response;
             $rootScope.courses = response.courses;
             $rootScope.id = $rootScope.json.id;
@@ -56,7 +58,7 @@ raoweb.factory('courselistService', function ($http, $rootScope, $location, logi
             $rootScope.lastnames = $rootScope.json.lastnames;
             $rootScope.resources_uri = $rootScope.json.resources_uri;
         } else {
-            Materialize.toast(message, 5000, 'rounded');
+            Materialize.toast(message, 6000, 'rounded');
             /*if (response != msg) {
                 loginService.logout();
              }*/
@@ -65,6 +67,7 @@ raoweb.factory('courselistService', function ($http, $rootScope, $location, logi
 
     function error(msg) {
         var msgtxt = msg.status + " - " + msg.data;
+        swal(msgtxt, "", "info");
         Materialize.toast(msgtxt, 6000, 'rounded');
         if (msg.status === 401) {
             loginService.logout();

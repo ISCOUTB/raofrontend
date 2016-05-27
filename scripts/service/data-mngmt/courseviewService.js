@@ -1,4 +1,4 @@
-raoweb.factory('courseviewService', function ($http, $rootScope, $location) {
+raoweb.factory('courseviewService', function ($http, $rootScope, $location, courselistService) {
     return{
         teachercourseview: function (course) {
             $http({
@@ -15,11 +15,9 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location) {
                     if (type == 'teacher') {
                         Materialize.toast(msg, 5000, 'rounded');
                         $location.path("/dashboard/teacher/home");
-                        courselistService.teachercourses();
                     } else if (type == 'student') {
                         Materialize.toast(msg, 5000, 'rounded');
                         $location.path("/dashboard/student/home");
-                        courselistService.studentcourses();
                     } else {
                         var msgtxt = "401 - Acceso no autorizado";
                         Materialize.toast(msgtxt, 6000, 'rounded');
@@ -31,11 +29,9 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location) {
                     if (type == 'teacher') {
                         Materialize.toast(msg2, 5000, 'rounded');
                         $location.path("/dashboard/student/home");
-                        courselistService.teachercourses();
                     } else if (type == 'student') {
                         Materialize.toast(msg2, 5000, 'rounded');
                         $location.path("/dashboard/student/home");
-                        courselistService.studentcourses();
                     } else {
                         var msgtxt = "401 - Acceso no autorizado";
                         Materialize.toast(msgtxt, 6000, 'rounded');

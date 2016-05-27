@@ -7,7 +7,7 @@ controller('courseViewCtrl', ['$scope', '$location','$stateParams','courseviewSe
         }
         if (sessionService.get('type') === 'teacher'){
             courseviewService.teachercourseview($scope.course);
-            $state.go('courseview',{course:$scope.course})
+            $state.go('courseview',{course:$scope.course});
         }
         else{
             courseviewService.studentcourseview($scope.course);    

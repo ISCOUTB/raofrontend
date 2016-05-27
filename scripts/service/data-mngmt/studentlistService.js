@@ -55,11 +55,11 @@ raoweb.factory('studentlistService',function($http,$rootScope,$location,sessionS
                 }).success(function(response){
                     var msgtxt='Asistencia realizada';
                     Materialize.toast(msgtxt, 5000,'rounded');
-                    $location.path("/teacher/home");  
+                    $location.path("dashboard/teacher/home");  
                 }).catch(function(msg){
                     var msgtxt='Asistencia no realizada';
                     Materialize.toast(msgtxt, 5000,'rounded');
-                    $location.path("/teacher/home");  
+                    $location.path("dashboard/teacher/home");  
                 });
             };
         }
