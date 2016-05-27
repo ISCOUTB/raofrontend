@@ -1,5 +1,5 @@
 angular.module('raoweb').
-controller('courseViewCtrl', ['$scope', '$location','$stateParams','courseviewService','sessionService','$state', function ($scope, $location,   $stateParams,courseviewService,sessionService, $state) {
+controller('courseViewCtrl', ['$scope', '$location','$stateParams','courseviewService','sessionService','$state', function ($scope, $location, $stateParams, courseviewService, sessionService, $state) {
         $scope.course = $stateParams.course;
         $scope.user = sessionService.get('user');
         if(sessionStorage.length === 0){

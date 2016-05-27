@@ -1,59 +1,21 @@
-raoweb.factory('courseviewService', function ($http, $rootScope, $location, courselistService) {
+raoweb.factory('courseviewService', function ($http, $rootScope, $location, courselistService, loginService) {
     return{
         teachercourseview: function (course) {
+            $rootScope.students = false;
+            $rootScope.loading = true;
+
             $http({
                 url: "http://raoapi.utbvirtual.edu.co:8082/course/" + course + "/students?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'),
                 method: "GET",
             }).success(function (response) {
+                //console.log(response.students);
                 //console.log(response);
-                var msg = "El curso con NRC " + course + " no existe";
-                var msg2 = "No hay estudiantes matriculados en el curso con el NRC " + course;
-        
-                var type = sessionStorage.getItem('type');
-                
-                if (response == msg) {
-                    if (type == 'teacher') {
-                        Materialize.toast(msg, 5000, 'rounded');
-                        $location.path("/dashboard/teacher/home");
-                    } else if (type == 'student') {
-                        Materialize.toast(msg, 5000, 'rounded');
-                        $location.path("/dashboard/student/home");
-                    } else {
-                        var msgtxt = "401 - Acceso no autorizado";
-                        Materialize.toast(msgtxt, 6000, 'rounded');
-                        loginService.logout();
-                    }
-
-                } else if (response == msg2) {
-                    //console.log("No hay estudiantes matriculados en el curso con el NRC");
-                    if (type == 'teacher') {
-                        Materialize.toast(msg2, 5000, 'rounded');
-                        $location.path("/dashboard/student/home");
-                    } else if (type == 'student') {
-                        Materialize.toast(msg2, 5000, 'rounded');
-                        $location.path("/dashboard/student/home");
-                    } else {
-                        var msgtxt = "401 - Acceso no autorizado";
-                        Materialize.toast(msgtxt, 6000, 'rounded');
-                        loginService.logout();
-                    }
-                } else {
-                    $rootScope.json = response;
-                    $rootScope.nrc = $rootScope.json.nrc;
-                    $rootScope.subject = $rootScope.json.subject;
-                    $rootScope.students = $rootScope.json.students;
-                    $rootScope.names = $rootScope.json.students.names;
-                    $rootScope.lastnames = $rootScope.json.students.lastnames;
-                    $rootScope.estudentID = $rootScope.json.students.id;
-                }
+                returnData(response, course);
             }).catch(function (msg) {
-                var msgtxt = msg.status + " - " + msg.data;
-                Materialize.toast(msgtxt, 6000, 'rounded');
-                if (msg.status === 401) {
-                    loginService.logout();
-                }
+                error("0", msg);
             });
         },
+        
         studentcourseview: function (course) {
             $http({
                 url: "http://raoapi.utbvirtual.edu.co:8082/course/" + course + "/students?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'),
@@ -79,7 +41,7 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                 url: "http://raoapi.utbvirtual.edu.co:8082/course/" + course + "/attendance?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'),
                 method: "GET",
             }).success(function (response) {
-                console.log("graph response",response);
+                console.log("graph response", response);
                 response = response["students"];
                 for (i = 0; i < response.length; i++) {
                     $rootScope.students_names.push(response[i]["student_name"] + " " + response[i]["student_lastname"]);
@@ -97,6 +59,7 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                     }
                 }
                 $('#modalStatistics').openModal();
+
                 $(function () {
                     $('#container').highcharts({
                         chart: {
@@ -286,5 +249,90 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                 });
             })
         }
+    };
+
+    function returnData(response, course) {
+        $rootScope.loading = false;
+
+        var msg = "El curso con NRC " + course + " no existe";
+        var msg2 = "No hay estudiantes matriculados en el curso con el NRC " + course;
+        var msg3 = "401 - Acceso no autorizado";
+
+        var type = sessionStorage.getItem('type');
+        var message, swal_type, title, color;
+
+        switch (response) {
+            case msg:
+                title = "Info";
+                message = msg;
+                swal_type = "info";
+                color = "#8CD4F5";
+                break;
+            case msg3:
+                title = "Error";
+                message = msg3;
+                swal_type = "error";
+                color = "#DD6B55";
+                break;
+        }
+
+        if (response !== msg && response.students !== msg2 && response !== msg3) {   
+            $rootScope.json = response;
+            $rootScope.nrc = $rootScope.json.nrc;
+            $rootScope.subject = $rootScope.json.subject;
+            $rootScope.students = $rootScope.json.students;
+            $rootScope.names = $rootScope.json.students.names;
+            $rootScope.lastnames = $rootScope.json.students.lastnames;
+            $rootScope.estudentID = $rootScope.json.students.id;
+        } else {
+            if (response.students === msg2) {
+                $rootScope.json = response;
+                $rootScope.nrc = $rootScope.json.nrc;
+                $rootScope.subject = $rootScope.json.subject;
+            
+                $rootScope.students = true; //Mostrar mensaje de que no existen estudiantes matriculados en el curso
+            }else{
+                showSweetAlert(title, message, swal_type, color);
+                
+                if (response === msg) {
+                    if (type === 'teacher') {
+                        $location.path("/dashboard/teacher/home");
+                    } else if (type === 'student') {
+                        $location.path("/dashboard/student/home");
+                    } else {
+                        
+                    }
+                } else if (response === msg3) {
+                    error("1", response);
+                } 
+            } 
+            
+        }
+    }
+    
+    function error(num, msg) {
+        var message;
+        if(num === "0"){
+            message = msg.status + " - " + msg.data;            
+        }else{
+            message = msg;
+        }
+        
+        showSweetAlert("Error", message, "error", "#DD6B55");
+
+        if (msg.status === 401) {
+            loginService.logout();
+        }
+    }
+    
+    function showSweetAlert(title, message, swal_type, color){
+        swal({   
+            title: title,   
+            text: message,   
+            type: swal_type,     
+            confirmButtonColor: color,   
+            confirmButtonText: "Aceptar",   
+            closeOnConfirm: false 
+        });
     }
 });

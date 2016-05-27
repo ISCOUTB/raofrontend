@@ -1,4 +1,4 @@
-<div class="container listview" ng-controller="courseViewCtrl">
+<div class="container listview">
     <div class="container">
         <div class="card">
             <div class="card-content">
@@ -8,46 +8,63 @@
                 </div>
                 <h6>Listado de estudiantes</h6>
                 <br>
-                <div class="row">
-                    <div class="col s12 m6 l6"> 
-                        <form class="forms forms-inline input-field">
-                            <input type="text" class="input-big width-50" id="query" ng-model="query">
-                            <label for="query">Buscar</label>
-                        </form>
-                    </div>
-                    <div class="col s6 m3 l3">
-                        <a class="btn waves-effect waves-light backgroundgreen" ui-sref="studentlist({course : nrc})"><i class="fa fa-check"></i> Asistencia</a>
-                    </div>
-                    <div class="col s6 m3 l3">
-                        <a href="" ng-click="modalStatistics()" class="btn waves-effect waves-light red"><i class="fa fa-bar-chart"></i> Estadísticas</a>
-                    </div>
+                <div class="progress" ng-show="loading">
+                    <div class="indeterminate"></div>
                 </div>
-                <div ng-repeat="s in students| filter:query | orderBy:'s.name'">
-                    <div class="collection">	
-                        <div class="collection collection-item avatar">
-                            <div class="col s12 m8 l8 left collectiondiv">
-                                <a ng-model="id" ui-sref="studentprofile({user: s.id, course: nrc})">
-                                    <i class="fa fa-user circle red"></i>
-                                    <p>{{s.names}} {{s.lastnames}}</p>
-                                    <p class="black-text">{{s.id}}</p>
-                                    <p class="black-text">{{s.email}}</p>
-                                </a>
+                <div ng-hide="loading">
+                    <div ng-if="students.length > 0">
+                        <div class="row">
+                            <div class="col s12 m6 l6"> 
+                                <form class="forms forms-inline input-field">
+                                    <input type="text" class="input-big width-50" id="query" ng-model="query">
+                                    <label for="query">Buscar</label>
+                                </form>
+                            </div>
+                            <div class="col s6 m3 l3">
+                                <a class="btn waves-effect waves-light backgroundgreen" ui-sref="studentlist({course : nrc})"><i class="fa fa-check"></i> Asistencia</a>
+                            </div>
+                            <div class="col s6 m3 l3">
+                                <a href="" ng-click="modalStatistics()" class="btn waves-effect waves-light red"><i class="fa fa-bar-chart"></i> Estadísticas</a>
+                            </div>
+                        </div>
+
+                        <div ng-repeat="s in students| filter:query | orderBy:'s.name'">
+                            <div class="collection">	
+                                <div class="collection collection-item avatar">
+                                    <div class="col s12 m8 l8 left collectiondiv">
+                                        <a ng-model="id" ui-sref="studentprofile({user: s.id, course: nrc})">
+                                            <i class="fa fa-user circle red"></i>
+                                            <p>{{s.names}} {{s.lastnames}}</p>
+                                            <p class="black-text">{{s.id}}</p>
+                                            <p class="black-text">{{s.email}}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="home" ng-show="students">
+                        <div class="warning-box" id="sensors_warning_box">
+                            <p>
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span> <strong>El curso no tiene estudiantes matriculados</strong></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="modalStatistics" class="modal">
+                        <div class="row">
+                            <div class="col s12">
+                                <h3 class="center">Estadisticas del curso</h3>
+                            </div>
+                            <div class="col s10 push-s1 pull-s1 span6">
+                                <div class="center" id="container" ></div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>  
-    <div id="modalStatistics" class="modal">
-            <div class="row">
-                <div class="col s12">
-                    <h3 class="center">Estadisticas del curso</h3>
-                </div>
-                <div class="col s10 push-s1 pull-s1 span6">
-                    <div class="center" id="container" ></div>
-                </div>
-            </div>
     </div>
 </div>
