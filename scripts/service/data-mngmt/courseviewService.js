@@ -31,6 +31,7 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                 $location.path("/login");
             });
         },
+        
         getattendance: function (course) {
             $rootScope.students_names = new Array();
             $rootScope.came = new Array();
@@ -159,6 +160,7 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                 });
             });
         },
+        
         studentstatistics: function (student, course) {
             $rootScope.array = new Array();
             $http({
@@ -306,7 +308,6 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                     error("1", response);
                 } 
             } 
-            
         }
     }
     

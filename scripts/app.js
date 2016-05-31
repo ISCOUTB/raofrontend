@@ -65,5 +65,3 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'studentViewCtrl'
         });
 });
-
-

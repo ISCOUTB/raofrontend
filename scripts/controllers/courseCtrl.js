@@ -12,8 +12,14 @@ raoweb.controller('courseCtrl', ['$scope', '$location', '$http', '$rootScope', '
             $location.path("/dashboard/student/home");
             courselistService.studentcourses();
         }else{
-            var msgtxt = "401 - Acceso no autorizado";
-            Materialize.toast(msgtxt, 6000, 'rounded'); 
+            swal({   
+                title: "Error",   
+                text: "401 - Acceso no autorizado",   
+                type: "error",     
+                confirmButtonColor: "#DD6B55",   
+                confirmButtonText: "Aceptar",   
+                closeOnConfirm: false 
+            });
             loginService.logout();
         }
     }
