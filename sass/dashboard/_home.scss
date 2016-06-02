@@ -5,7 +5,6 @@
     
     .collectiondiv a{
         text-align: left;
-        font-size: 1.5rem;
         letter-spacing: 1px;
         
     }
@@ -27,13 +26,13 @@
     
     @media (min-width :768px) and (max-width : 992px) {
         .asistenciadiv a{
-            font-size: 1.1rem;
+            font-size: 1.4rem;
         }
     }
 
     @media (min-width:993px) {
         .asistenciadiv a{
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
     }
 }

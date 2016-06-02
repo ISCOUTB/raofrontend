@@ -1,4 +1,4 @@
-<div class="container listview" ng-controller="studentsByCourseCtrl">
+<div class="container listview">
     <div class="container">
         <div class="card">
             <div class="card-content">
@@ -6,7 +6,7 @@
                     <a onclick="window.history.back();" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
                     <h4 class="fontblue">{{subject}} {{nrc}}</h4>
                 </div>
-                <h6>Lista de estudiantes</h6>
+                <h5>Lista de estudiantes</h5>
                 <br>
                 <div ng-repeat="s in students| filter:query | orderBy:'s.names'">
                     <div class="collection">	

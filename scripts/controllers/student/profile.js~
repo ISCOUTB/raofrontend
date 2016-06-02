@@ -1,7 +1,0 @@
-asd'use strict';
-angular.module('raoweb')
-  .controller('studentCtrl', ['$scope','loginService','$http', '$location','$stateParams', function($scope,loginService, $http,$location,$stateParams,  alertsService,profile){
-      $scope.user  = $stateParams.user;
-      profile.studentprofile($scope.user);
-      
-}]);

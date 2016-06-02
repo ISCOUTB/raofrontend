@@ -1,35 +1,31 @@
 raoweb.factory('courseviewService', function ($http, $rootScope, $location, courselistService, loginService) {
     return{
         teachercourseview: function (course) {
-            $rootScope.students = false;
+            $rootScope.students_empty = false;
             $rootScope.loading = true;
+            
+            /*$http({
+             url: "http://raoapi.utbvirtual.edu.co:8082/course/" + course + "/students?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'),
+             method: "GET"
+             }).success(function (response) {
+             //console.log(response.students);
+             return response;
+             //returnData(response, course);
+             }).catch(function (msg) {
+             error("0", msg);
+             });*/
 
-            $http({
-                url: "http://raoapi.utbvirtual.edu.co:8082/course/" + course + "/students?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'),
-                method: "GET",
-            }).success(function (response) {
-                //console.log(response.students);
-                //console.log(response);
-                returnData(response, course);
-            }).catch(function (msg) {
-                error("0", msg);
+            var promise = $http.get("http://raoapi.utbvirtual.edu.co:8082/course/" + course + "/students?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'))
+            .then(function (response) { 
+                // The then function here is an opportunity to modify the response
+                // console.log(response);
+                // The return value gets picked up by the then in the controller.
+                return response.data;
+            }, function (error) {
+                return error;
             });
-        },
-        
-        studentcourseview: function (course) {
-            $http({
-                url: "http://raoapi.utbvirtual.edu.co:8082/course/" + course + "/students?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'),
-                method: "GET",
-            }).success(function (response) {
-                $rootScope.courses = response;
-                $rootScope.nrc = $rootScope.courses.nrc;
-                $rootScope.subject = $rootScope.courses.subject;
-                $rootScope.students = $rootScope.courses.students;
-            }).catch(function (msg) {
-                var msgtxt = 'Las credenciales no concuerdan. Ingrese nuevamente.';
-                Materialize.toast(msgtxt, 5000, 'rounded');
-                $location.path("/login");
-            });
+            // Return the promise to the controller
+            return promise;
         },
         
         getattendance: function (course) {
@@ -37,12 +33,11 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
             $rootScope.came = new Array();
             $rootScope.didnotcome = new Array();
 
-
             $http({
                 url: "http://raoapi.utbvirtual.edu.co:8082/course/" + course + "/attendance?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'),
-                method: "GET",
+                method: "GET"
             }).success(function (response) {
-                console.log("graph response", response);
+                // console.log("graph response", response);
                 response = response["students"];
                 for (i = 0; i < response.length; i++) {
                     $rootScope.students_names.push(response[i]["student_name"] + " " + response[i]["student_lastname"]);
@@ -67,38 +62,15 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                             type: 'bar'
                         },
                         title: {
-                            text: '',
-                            style: {
-                                color: 'black',
-                                fontSize: '20px',
-                                fontWeight: 'bold'
-                            }
+                            text: ''
                         },
                         xAxis: {
-                            categories: $rootScope.students_names,
-                            labels: {
-                                style: {
-                                    color: 'black',
-                                    fontSize: '12px',
-                                    fontWeight: 'bold'
-                                }
-                            }
+                            categories: $rootScope.students_names
                         },
                         yAxis: {
                             max: 100,
                             title: {
-                                text: 'Attendances (%)',
-                                style: {
-                                    color: 'black',
-                                    fontWeight: 'bold'
-                                }
-                            },
-                            labels: {
-                                style: {
-                                    color: 'black',
-                                    fontSize: '12px',
-                                    fontWeight: 'bold'
-                                }
+                                text: 'Asistencias (%)'
                             }
                         },
                         legend: {
@@ -108,10 +80,6 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                         plotOptions: {
                             bar: {
                                 dataLabels: {
-                                    style: {
-                                        color: 'black',
-                                        fontSize: '10px'
-                                    },
                                     enabled: true,
                                     formatter: function () {
                                         if (this.y !== 0) {
@@ -150,10 +118,10 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                             }
                         },
                         series: [{
-                                name: 'Came',
+                                name: 'Asistencias',
                                 data: $rootScope.came
                             }, {
-                                name: 'Did not come',
+                                name: 'Faltas',
                                 data: $rootScope.didnotcome
                             }]
                     });
@@ -165,13 +133,19 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
             $rootScope.array = new Array();
             $http({
                 url: "http://raoapi.utbvirtual.edu.co:8082/student/" + student + "/course/" + course + "/attendance?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'),
-                method: "GET",
+                method: "GET"
             }).success(function (response) {
+                //console.log(response.attendance.value);
                 $rootScope.att = response.attendance;
-                $rootScope.come = $rootScope.att.percent[0].value;
-                $rootScope.notcome = $rootScope.att.percent[1].value;
+
+                //Attendance values
                 $rootScope.comenum = $rootScope.att.value[0].value;
                 $rootScope.notcomenum = $rootScope.att.value[1].value;
+
+                //Attendance percentages
+                $rootScope.come = $rootScope.att.percent[0].value;
+                $rootScope.notcome = $rootScope.att.percent[1].value;
+
                 for (i = 0; i < $rootScope.att.length; i++) {
                     $rootScope.array.push([$rootScope.att.key, $rootScope.att.value]);
                 }
@@ -184,7 +158,7 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                         plotShadow: false
                     },
                     title: {
-                        text: 'Attendances of ' + student
+                        text: 'Asistencias'
                     },
                     tooltip: {
                         backgroundColor: {
@@ -242,98 +216,14 @@ raoweb.factory('courseviewService', function ($http, $rootScope, $location, cour
                             name: 'Attendance',
                             data: [{
                                     name: 'Came',
-                                    y: $rootScope.come,
+                                    y: $rootScope.come
                                 }, {
                                     name: 'Not came',
-                                    y: $rootScope.notcome,
+                                    y: $rootScope.notcome
                                 }]
                         }]
                 });
-            })
+            });
         }
     };
-
-    function returnData(response, course) {
-        $rootScope.loading = false;
-
-        var msg = "El curso con NRC " + course + " no existe";
-        var msg2 = "No hay estudiantes matriculados en el curso con el NRC " + course;
-        var msg3 = "401 - Acceso no autorizado";
-
-        var type = sessionStorage.getItem('type');
-        var message, swal_type, title, color;
-
-        switch (response) {
-            case msg:
-                title = "Info";
-                message = msg;
-                swal_type = "info";
-                color = "#8CD4F5";
-                break;
-            case msg3:
-                title = "Error";
-                message = msg3;
-                swal_type = "error";
-                color = "#DD6B55";
-                break;
-        }
-
-        if (response !== msg && response.students !== msg2 && response !== msg3) {   
-            $rootScope.json = response;
-            $rootScope.nrc = $rootScope.json.nrc;
-            $rootScope.subject = $rootScope.json.subject;
-            $rootScope.students = $rootScope.json.students;
-            $rootScope.names = $rootScope.json.students.names;
-            $rootScope.lastnames = $rootScope.json.students.lastnames;
-            $rootScope.estudentID = $rootScope.json.students.id;
-        } else {
-            if (response.students === msg2) {
-                $rootScope.json = response;
-                $rootScope.nrc = $rootScope.json.nrc;
-                $rootScope.subject = $rootScope.json.subject;
-            
-                $rootScope.students = true; //Mostrar mensaje de que no existen estudiantes matriculados en el curso
-            }else{
-                showSweetAlert(title, message, swal_type, color);
-                
-                if (response === msg) {
-                    if (type === 'teacher') {
-                        $location.path("/dashboard/teacher/home");
-                    } else if (type === 'student') {
-                        $location.path("/dashboard/student/home");
-                    } else {
-                        
-                    }
-                } else if (response === msg3) {
-                    error("1", response);
-                } 
-            } 
-        }
-    }
-    
-    function error(num, msg) {
-        var message;
-        if(num === "0"){
-            message = msg.status + " - " + msg.data;            
-        }else{
-            message = msg;
-        }
-        
-        showSweetAlert("Error", message, "error", "#DD6B55");
-
-        if (msg.status === 401) {
-            loginService.logout();
-        }
-    }
-    
-    function showSweetAlert(title, message, swal_type, color){
-        swal({   
-            title: title,   
-            text: message,   
-            type: swal_type,     
-            confirmButtonColor: color,   
-            confirmButtonText: "Aceptar",   
-            closeOnConfirm: false 
-        });
-    }
 });

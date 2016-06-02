@@ -40,14 +40,18 @@ and open the template in the editor.
     }
 
     /* label underline focus color */
-    input[type=text], input[type=password], input[type=text]:focus, input[type=password]:focus, input[type=text].valid, input[type=password].valid, input[type=text].invalid, input[type=password].invalid, input[type=text]:focus:not([readonly]),
+    input[type=text], input[type=password], input[type=password]:focus, input[type=text].valid, input[type=password].valid, input[type=text].invalid, input[type=password].invalid, input[type=text]:focus:not([readonly]),
     input[type=password]:focus:not([readonly]){
         @include input-color($dark_primary);
         color: white;
         padding-left: 10px;
         margin-top: 10px;
     }
-
+    
+    input[type=password], input[type=password]:focus, input[type=password].valid, input[type=password].invalid,
+    input[type=password]:focus:not([readonly]){
+        letter-spacing: 3px;
+    }
     .btn{
         text-transform: none;
     }

@@ -15,18 +15,18 @@
                         <div class="row">
                             <div class="col offset-s2 s8 offset-m2 m8 offset-l2 l8">
                                 <label for="usuario">Usuario</label>
-                                <input id="usuario" type="text" pattern="[Tt]+[0-9]{8}" ng-model="user.username" placeholder="Usuario" required>
+                                <input id="usuario" type="text" pattern="[Tt]+[0-9]{8}" ng-model="user.username" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col offset-s2 s8 offset-m2 m8 offset-l2 l8">
                                 <label for="contrasena">Contraseña</label>
-                                <input id="contrasena" type="password" pattern=".{6}" maxlength = "6" class="validate" ng-model="user.password" placeholder="Contraseña" required>
+                                <input id="contrasena" type="password" pattern=".{6}" maxlength = "6" class="validate" ng-model="user.password" required>
                             </div>
                         </div>  
                         <div class="row center">
-                            <button class="btn waves-effect waves-light backgroundgreen" type="submit" ng-click="login(user)" >Ingresar</button>
+                            <button class="btn waves-effect waves-light backgroundgreen" type="submit" ng-click="login(user);" >Ingresar</button>
                         </div>
                     </form>
                 </div>

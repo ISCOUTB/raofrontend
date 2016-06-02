@@ -6,7 +6,7 @@ angular.module('raoweb')
     }else{
         $scope.user  = $stateParams.user; 
         $scope.course  = $stateParams.course; 
-        if (sessionService.get('type') == 'teacher'){
+        if (sessionService.get('type') === 'teacher'){
             profileService.studentprofile($scope.user,$scope.course);
             profileService.studentstats($scope.user,$scope.course);
         }else{

@@ -9,8 +9,8 @@ and open the template in the editor.
 */
 
 @font-face { 
-    font-family: 'champagne Limousines'; 
-    src: url('../font/champagne_limousines/Champagne&Limousines.ttf'); 
+    font-family: 'febrero'; 
+    src: url('../font/febrero/Febrero-Light.otf'); 
 }
 
 $primary: #E0E0E0; //Light grey 
@@ -22,7 +22,7 @@ $background: #EFEFEF; //Light grey
 $blue : #039BE5; 
 
 body{
-    font-family: 'champagne Limousines';
+    font-family: 'febrero';
     font-weight: lighter;
     background-color: $background;
 }
@@ -59,11 +59,19 @@ body{
         .warning-box {
             font-size: 1em;
         }
+        
+        body{
+            font-size: 100%;
+        }
     }
 
     @media (min-width: 460px) and (max-width : 767px){
         .warning-box {
             font-size: 1.2em;
+        }
+        
+        body{
+            font-size: 110%;
         }
     }    
 
@@ -71,10 +79,18 @@ body{
         .warning-box {
             font-size: 1.3em;
         }
+        
+        body{
+            font-size: 120%;
+        }
     }
 
     @media (min-width:993px) {
         .warning-box {
             font-size: 1.4em;
+        }
+        
+        body{
+            font-size: 120%;
         }
     }

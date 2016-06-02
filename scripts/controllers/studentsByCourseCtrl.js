@@ -1,5 +1,5 @@
-angular.module('raoweb')
-.controller('studentsByCourseCtrl', ['$scope','$element', '$location','$http', '$stateParams','studentlistService','$rootScope','sessionService',function($scope,$element, $location,$http, $stateParams, studentlistService,$rootScope,sessionService) {
+'use strict';	
+raoweb.controller('studentsByCourseCtrl', ['$scope','$element', '$location','$http', '$stateParams','studentlistService','$rootScope','sessionService', 'loginService',function($scope,$element, $location,$http, $stateParams, studentlistService, $rootScope, sessionService, loginService) {
     $scope.course = $stateParams.course;
     if(sessionStorage.length===0){
         $location.path('/login');
@@ -10,8 +10,14 @@ angular.module('raoweb')
         studentlistService.attendancepost();
     }
     else{
-        var msgtxt = 'Las credenciales no concuerdan. Ingrese nuevamente.';
-        Materialize.toast(msgtxt, 5000, 'rounded');
-        $location.path("/login");
+        swal({   
+            title: "Error",   
+            text: "401 - Acceso no autorizado",   
+            type: "error",     
+            confirmButtonColor: "#DD6B55",   
+            confirmButtonText: "Aceptar",   
+            closeOnConfirm: false 
+        });
+        loginService.logout();
     }
 }]);

@@ -24,7 +24,7 @@ raoweb.factory('profileService',function($http,$rootScope){
                 url: "http://raoapi.utbvirtual.edu.co:8082/student/"+user+"/course/"+course+"/attendance?username="+ sessionStorage.getItem('user')+"&token="+sessionStorage.getItem('token'), 
                 method: "GET",
             }).success(function (response){
-                    $rootScope.att = response.attendance
+                    $rootScope.att = response.attendance;
                     $rootScope.came = $rootScope.att.value[0].value;
                     $rootScope.notcame = $rootScope.att.value[1].value;                
             })

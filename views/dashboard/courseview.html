@@ -6,7 +6,7 @@
                     <a ui-sref="home" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
                     <h4 class="fontblue">{{subject}} {{nrc}}</h4>
                 </div>
-                <h6>Listado de estudiantes</h6>
+                <h5>Listado de estudiantes</h5>
                 <br>
                 <div class="progress" ng-show="loading">
                     <div class="indeterminate"></div>
@@ -24,7 +24,7 @@
                                 <a class="btn waves-effect waves-light backgroundgreen" ui-sref="studentlist({course : nrc})"><i class="fa fa-check"></i> Asistencia</a>
                             </div>
                             <div class="col s6 m3 l3">
-                                <a href="" ng-click="modalStatistics()" class="btn waves-effect waves-light red"><i class="fa fa-bar-chart"></i> Estadísticas</a>
+                                <a ng-click="modalStatistics();" class="btn waves-effect waves-light red"><i class="fa fa-bar-chart"></i> Estadísticas</a>
                             </div>
                         </div>
 
@@ -44,7 +44,7 @@
                         </div>
                     </div>
 
-                    <div class="home" ng-show="students">
+                    <div class="home" ng-show="students_empty">
                         <div class="warning-box" id="sensors_warning_box">
                             <p>
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -54,13 +54,16 @@
                     </div>
 
                     <div id="modalStatistics" class="modal">
-                        <div class="row">
-                            <div class="col s12">
-                                <h3 class="center">Estadisticas del curso</h3>
+                        <div class="modal-content">
+                            <div class="row">
+                                <h3 class="center">Estadísticas del curso</h3>
+                                <div class="col l9 push-l1 m10 push-m1 s12">
+                                    <div class="center" id="container" ></div>
+                                </div>
                             </div>
-                            <div class="col s10 push-s1 pull-s1 span6">
-                                <div class="center" id="container" ></div>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a onclick="$('#modalStatistics').closeModal();" class="btn-flat">CERRAR</a>
                         </div>
                     </div>
                 </div>

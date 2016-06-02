@@ -2,37 +2,51 @@
     .btn:hover{
         background-color: $secondary;
     }
-    
+
     /* label color */
     .input-field label {
-      color: $secondary;
+        color: $secondary;
+        font-size: 1.2rem;
     }
-    
+
     /* label underline focus color */
     .input-field input[type=text]:focus {
-      border-bottom: 1px solid $secondary;
+        border-bottom: 1px solid $secondary;
+        font-size: 1.3rem;
     }
-    
+
     .pagetitle a{
         margin-right: 10px;
     }
-    
+
     [type="checkbox"].filled-in:checked + label:after {
         background-color: $blue;
         border: 3px solid $blue;
     }
-    
+
     .collection .collection-item.avatar i.circle {
         font-size: 28px;
     }
-    
+
+
+    /*Modal*/
+    .modal{
+        width: 100%; 
+        min-height: auto;
+        padding-top: 10px;
+    }
+
     @media (max-width:459px) {
         .card{
             margin: 15px 0; 
         }
-        
+
         .container{
             width: 100%;
+        }
+
+        .collection .collection-item.avatar p {
+            font-size: 1.1rem;
         }
     }
 
@@ -41,9 +55,13 @@
             padding-left: 15px;
             margin: 15px 0;   
         }
-        
+
         .container{
             width: 100%;
+        }
+
+        .collection .collection-item.avatar p {
+            font-size: 1.1rem;
         }
     }
 
@@ -52,9 +70,13 @@
             padding-left: 25px;
             margin: 35px 0;   
         }
-        
+
         .container{
             width: 100%;
+        }
+
+        .collection .collection-item.avatar p {
+            font-size: 1.1rem;
         }
     }
 
@@ -66,8 +88,12 @@
         .container{
             width: 100%;
         }
+
+        .collection .collection-item.avatar p {
+            font-size: 1.2rem;
+        }
     }
-    
+
     @media (min-width : 1201px){
         .card{
             padding-left: 25px;
@@ -76,6 +102,10 @@
         .container{
             width: 80%;
         }
+
+        .collection .collection-item.avatar p {
+            font-size: 1.2rem;
+        }
     }
-    
+
 }

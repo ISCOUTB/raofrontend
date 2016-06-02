@@ -8,7 +8,7 @@ raoweb.factory('courselistService', function ($http, $rootScope, $location, logi
                 url: "http://raoapi.utbvirtual.edu.co:8082/teacher/" + sessionStorage.getItem('user') + "/courses?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'),
                 method: "GET"
             }).success(function (response) {
-                console.log(response);
+                //console.log(response);
                 returnData(response);
 
             }).catch(function (msg) {
@@ -22,7 +22,7 @@ raoweb.factory('courselistService', function ($http, $rootScope, $location, logi
                 url: "http://raoapi.utbvirtual.edu.co:8082/student/" + sessionStorage.getItem('user') + "/courses?username=" + sessionStorage.getItem('user') + "&token=" + sessionStorage.getItem('token'),
                 method: "GET"
             }).success(function (response) {
-                console.log(response);
+                //console.log(response);
                 returnData(response);
 
             }).catch(function (msg) {
@@ -74,7 +74,6 @@ raoweb.factory('courselistService', function ($http, $rootScope, $location, logi
         } else {
             
             if (response.courses === msg) {
-                console.log(msg);
                 $rootScope.courses_empty = true; //Mostrar mensaje de que no existen cursos activos para el usuario
             }else{
                 showSweetAlert(title, message, swal_type, color);

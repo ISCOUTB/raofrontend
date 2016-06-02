@@ -8093,12 +8093,12 @@ and open the template in the editor.
     Author     : lauricdd
 */
 @font-face {
-  font-family: 'champagne Limousines';
-  src: url("../font/champagne_limousines/Champagne&Limousines.ttf");
+  font-family: 'febrero';
+  src: url("../font/febrero/Febrero-Light.otf");
 }
 
 body {
-  font-family: 'champagne Limousines';
+  font-family: 'febrero';
   font-weight: lighter;
   background-color: #EFEFEF;
 }
@@ -8135,11 +8135,17 @@ body {
   .warning-box {
     font-size: 1em;
   }
+  body {
+    font-size: 100%;
+  }
 }
 
 @media (min-width: 460px) and (max-width: 767px) {
   .warning-box {
     font-size: 1.2em;
+  }
+  body {
+    font-size: 110%;
   }
 }
 
@@ -8147,11 +8153,17 @@ body {
   .warning-box {
     font-size: 1.3em;
   }
+  body {
+    font-size: 120%;
+  }
 }
 
 @media (min-width: 993px) {
   .warning-box {
     font-size: 1.4em;
+  }
+  body {
+    font-size: 120%;
   }
 }
 
@@ -8192,7 +8204,7 @@ and open the template in the editor.
   font-weight: 300;
 }
 
-#login-page input[type=text], #login-page input[type=password], #login-page input[type=text]:focus, #login-page input[type=password]:focus, #login-page input[type=text].valid, #login-page input[type=password].valid, #login-page input[type=text].invalid, #login-page input[type=password].invalid, #login-page input[type=text]:focus:not([readonly]),
+#login-page input[type=text], #login-page input[type=password], #login-page input[type=password]:focus, #login-page input[type=text].valid, #login-page input[type=password].valid, #login-page input[type=text].invalid, #login-page input[type=password].invalid, #login-page input[type=text]:focus:not([readonly]),
 #login-page input[type=password]:focus:not([readonly]) {
   border-bottom: 1px solid #C1C1C1;
   box-shadow: 0 1px 0 0 #C1C1C1;
@@ -8200,6 +8212,11 @@ and open the template in the editor.
   color: white;
   padding-left: 10px;
   margin-top: 10px;
+}
+
+#login-page input[type=password], #login-page input[type=password]:focus, #login-page input[type=password].valid, #login-page input[type=password].invalid,
+#login-page input[type=password]:focus:not([readonly]) {
+  letter-spacing: 3px;
 }
 
 #login-page .btn, #login-page .btn-large {
@@ -8419,7 +8436,6 @@ and open the template in the editor.
 
 .home .collectiondiv a {
   text-align: left;
-  font-size: 1.5rem;
   letter-spacing: 1px;
 }
 
@@ -8440,19 +8456,20 @@ and open the template in the editor.
 
 @media (min-width: 768px) and (max-width: 992px) {
   .home .asistenciadiv a {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
 }
 
 @media (min-width: 993px) {
   .home .asistenciadiv a {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 }
 
 .listview {
   /* label color */
   /* label underline focus color */
+  /*Modal*/
 }
 
 .listview .btn:hover, .listview .btn-large:hover {
@@ -8461,10 +8478,12 @@ and open the template in the editor.
 
 .listview .input-field label {
   color: #0E7049;
+  font-size: 1.2rem;
 }
 
 .listview .input-field input[type=text]:focus {
   border-bottom: 1px solid #0E7049;
+  font-size: 1.3rem;
 }
 
 .listview .pagetitle a {
@@ -8480,12 +8499,21 @@ and open the template in the editor.
   font-size: 28px;
 }
 
+.listview .modal {
+  width: 100%;
+  min-height: auto;
+  padding-top: 10px;
+}
+
 @media (max-width: 459px) {
   .listview .card {
     margin: 15px 0;
   }
   .listview .container {
     width: 100%;
+  }
+  .listview .collection .collection-item.avatar p {
+    font-size: 1.1rem;
   }
 }
 
@@ -8497,6 +8525,9 @@ and open the template in the editor.
   .listview .container {
     width: 100%;
   }
+  .listview .collection .collection-item.avatar p {
+    font-size: 1.1rem;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
@@ -8506,6 +8537,9 @@ and open the template in the editor.
   }
   .listview .container {
     width: 100%;
+  }
+  .listview .collection .collection-item.avatar p {
+    font-size: 1.1rem;
   }
 }
 
@@ -8517,6 +8551,9 @@ and open the template in the editor.
   .listview .container {
     width: 100%;
   }
+  .listview .collection .collection-item.avatar p {
+    font-size: 1.2rem;
+  }
 }
 
 @media (min-width: 1201px) {
@@ -8526,6 +8563,9 @@ and open the template in the editor.
   }
   .listview .container {
     width: 80%;
+  }
+  .listview .collection .collection-item.avatar p {
+    font-size: 1.2rem;
   }
 }
 
