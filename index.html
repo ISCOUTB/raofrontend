@@ -11,6 +11,7 @@
     </head>
     <body ng-app="raoweb">
         <div ui-view></div>
+        <!-- libs -->
         <script src="libs/jquery/jquery-1.9.1.js"></script>
         <script src="libs/highcharts/highcharts.js"></script>
         <script src="libs/highcharts/grid-light.js"></script>
@@ -30,17 +31,14 @@
         <!-- factories -->
         <script src="scripts/factories/AuthFactory.js"></script>
         <script src="scripts/factories/LocalStorageFactory.js"></script>
+        <script src="scripts/factories/CourseListFactory.js"></script>
         
         <!-- services-->
-        <script src="scripts/service/login/loginService.js"></script>
-        <script src="scripts/service/login/sessionService.js"></script>
         <script src="scripts/service/data-mngmt/profileService.js"></script>    
-        <script src="scripts/service/data-mngmt/courselistService.js"></script>
         <script src="scripts/service/data-mngmt/courseviewService.js"></script>
         <script src="scripts/service/data-mngmt/studentlistService.js"></script>
         
         <!-- controllers-->
-        <script src="scripts/controllers/logoutctrl.js"></script>
         <script src="scripts/controllers/AuthCtrl.js"></script>
         <script src="scripts/controllers/CourseCtrl.js"></script>
         

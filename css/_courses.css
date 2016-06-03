@@ -1,0 +1,163 @@
+#courses {
+  /***Card panel***/
+  /*div.card-panel{
+        margin-bottom: 0;
+    }*/
+  /*.name{
+        background-color: #e0e0e0;
+    }*/
+  /***Card panel***/
+}
+
+#courses .card-panel {
+  background-color: #efefef;
+  padding: 0;
+}
+
+#courses h1 {
+  text-align: left;
+  margin: 0 0 5px 0;
+}
+
+#courses #titulo {
+  background-color: #044f43;
+  padding-left: 60px;
+}
+
+#courses .collection-item {
+  margin: 3% 5%;
+  width: 90%;
+  background-color: #e0e0e0;
+  padding: 10px;
+}
+
+#courses .collection-item a {
+  color: #8e8e8e;
+}
+
+#courses .collection-item span {
+  margin-bottom: 0;
+}
+
+#courses .collection-item p {
+  margin-top: 0;
+}
+
+#courses .name a {
+  color: #6f6f6f;
+}
+
+#courses .button {
+  margin-top: 2px;
+  text-transform: none;
+}
+
+#courses .collectiondiv, #courses .asistenciadiv {
+  margin: 5px 0;
+}
+
+#courses .collectiondiv a {
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+#courses .collectiondiv p {
+  margin-bottom: 0;
+  font-size: 1.4rem;
+}
+
+#courses #container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+@media (max-width: 459px) {
+  #courses .card-panel {
+    margin: 5% 0;
+    border: 5px solid #043a30;
+  }
+  #courses h1 {
+    font-size: 2.7em;
+  }
+  #courses .button {
+    padding: 0;
+  }
+  #courses #profesor {
+    margin: 5% 0;
+  }
+}
+
+@media (min-width: 460px) and (max-width: 767px) {
+  #courses {
+    /** Card panel ***/
+    /** Card panel ***/
+  }
+  #courses .card-panel {
+    margin: 5% 0;
+    border: 5px solid #043a30;
+  }
+  #courses #logo {
+    font-size: 4em;
+  }
+  #courses h1 {
+    font-size: 2.7em;
+  }
+  #courses #profesor {
+    margin: 5% 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  #courses {
+    /** Card panel ***/
+    /** Card panel ***/
+  }
+  #courses .card-panel {
+    margin: 10% 0;
+    border: 12px solid #043a30;
+  }
+  #courses #logo {
+    font-size: 4em;
+  }
+  #courses h1 {
+    font-size: 3.6em;
+  }
+  #courses #profesor {
+    margin: 10% 0;
+  }
+  #courses .asistenciadiv a {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 993px) {
+  #courses {
+    /** Card panel ***/
+    /** Card panel ***/
+  }
+  #courses .card-panel {
+    margin: 6% 12.5%;
+    width: 75%;
+    border: 15px solid #043a30;
+  }
+  #courses #logo {
+    font-size: 5em;
+  }
+  #courses h1 {
+    font-size: 4em;
+  }
+  #courses #name {
+    font-size: 1.2em;
+  }
+  #courses .collection-item {
+    font-size: 1.4em;
+  }
+  #courses #profesor {
+    margin: 6% 12.5%;
+    width: 75%;
+  }
+  #courses .asistenciadiv a {
+    font-size: 1.5rem;
+  }
+}

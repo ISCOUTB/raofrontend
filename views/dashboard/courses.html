@@ -1,0 +1,91 @@
+<div class="container coursesList">
+    <div class="row">
+        <div class="col s12 m8 offset-m2 l8 offset-l2">
+            <h2>Cursos</h2>
+            <div id="tabs">
+                <ul>
+                    <li ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="onClickTab(tab)">{{tab.title}}</li>
+                </ul>
+                <div id="mainView" class="z-depth-4">
+                    <div ng-include="currentTab"></div>
+                </div>
+            </div>
+            
+            <script type="text/ng-template" id="profesor.tpl.html">
+                <div id="viewOne">
+                    <div class="container">
+                        <div class="progress" ng-show="loading_teacher">
+                            <div class="indeterminate"></div>
+                        </div>
+                        <div ng-hide="loading_teacher">
+                            <div ng-if="courses_teacher.length > 0">
+                                <div ng-repeat="c in courses_teacher">
+                                    <div class="collection">	
+                                        <div class="collection collection-item avatar">
+                                            <div class="col s12 m8 l8 left collectiondiv">
+                                                <a ng-model="id" ui-sref="courseview({course : c.nrc})">
+                                                    <i class="fa fa-users circle red"></i>
+                                                    <span class="title">{{c.subject_name}}</span>
+                                                    <p>{{c.nrc}}</p>
+                                                </a>
+                                            </div>
+                                            <div class="col s12 m4 l4 right asistenciadiv">
+                                                <a class="fontgreen" ui-sref="studentlist({course : c.nrc})"><i class="fa fa-bars left"></i>Tomar asistencia</a>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ng-show="courses_empty_teacher">
+                                <div class="warning-box">
+                                    <p>
+                                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                        <span> <strong>No tiene cursos activos actualmente</strong></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="estudiante.tpl.html">
+                    <div id="viewTwo">
+                        <div ng-style="show" class="container">
+                            <div class="progress" ng-show="loading_student">
+                                <div class="indeterminate"></div>
+                            </div>
+                            <div ng-hide="loading_student">
+                                <div ng-if="courses_student.length > 0">
+                                    <div ng-repeat="c in courses_student">
+                                        <div class="collection">	
+                                            <div class="collection collection-item avatar">
+                                                <div class="collectiondiv">
+                                                    <a ng-model="id" ui-sref="studentcourseview({course : c.nrc})">
+                                                        <i class="fa fa-users circle red"></i>
+                                                        <span class="title">{{c.subject_name}}</span>
+                                                        <p>{{c.nrc}}</p>
+                                                    </a>
+                                                </div>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div ng-show="courses_empty_student">
+                                    <div class="warning-box">
+                                        <p>
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            <span> <strong>No tiene cursos activos actualmente</strong></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </script>
+        </div>
+    </div>
+</div>
+

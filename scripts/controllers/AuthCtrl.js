@@ -1,11 +1,10 @@
-var app = angular.module('raoweb');
-app.controller('AuthCtrl', function($scope, AuthFactory, LocalStorageFactory, $location) {
+raoweb.controller('AuthCtrl', function($scope, AuthFactory, LocalStorageFactory, $location) {
     $scope.login = function (user) {
         AuthFactory.login(user)
             .then(function(response) {
                 /*console.log("response");
                 console.log(response.data);*/
-                //Save data in localStorage
+                //Guardar datos en localStorage
                 var username = user.username;
                 var token = response.data.token;
                 LocalStorageFactory.set('user', username);

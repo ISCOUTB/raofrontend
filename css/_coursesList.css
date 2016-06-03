@@ -1,0 +1,32 @@
+/*** Courses list ***/
+.coursesList .collectiondiv, .coursesList .asistenciadiv {
+  margin: 20  px 0;
+}
+
+.coursesList .collectiondiv a {
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.coursesList .collectiondiv p {
+  margin-bottom: 0;
+  font-size: 1.4rem;
+}
+
+.coursesList #container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .coursesList .asistenciadiv a {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 993px) {
+  .coursesList .asistenciadiv a {
+    font-size: 1.5rem;
+  }
+}

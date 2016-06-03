@@ -37,21 +37,10 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
             .state('courses', {
                 url: '/courses',
                 parent: 'dashboard',
-                templateUrl: 'views/dashboard/home.html',
+                templateUrl: 'views/dashboard/courses.html',
                 controller: 'CourseCtrl'
             })
-            /*.state('home', {
-             url: '/teacher/home',
-             parent: 'dashboard',
-             templateUrl: 'views/dashboard/home.html',
-             controller: 'courseCtrl'
-             })
-             .state('studenthome', {
-             url: '/student/home',
-             parent: 'dashboard',
-             templateUrl: 'views/dashboard/student/home.html',
-             controller: 'courseCtrl'
-             })*/
+            
             //Home: teacher course view and student list
             .state('courseview', {
                 url: '/teacher/courseview/:course',
