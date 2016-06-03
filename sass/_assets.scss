@@ -54,43 +54,50 @@ body{
     font-size: 1.2em;
     margin-right: 10px;
 }
+/***** Warning Box *****/
+
+/***** Data preloader *****/
+.data-preloader {
+    margin:15% 0;
+}
+/***** Data preloader *****/
 
 @media (max-width:459px) {
-        .warning-box {
-            font-size: 1em;
-        }
-        
-        body{
-            font-size: 100%;
-        }
+    .warning-box {
+        font-size: 1em;
     }
 
-    @media (min-width: 460px) and (max-width : 767px){
-        .warning-box {
-            font-size: 1.2em;
-        }
-        
-        body{
-            font-size: 110%;
-        }
-    }    
+    body{
+        font-size: 100%;
+    }
+}
 
-    @media (min-width :768px) and (max-width : 992px) {
-        .warning-box {
-            font-size: 1.3em;
-        }
-        
-        body{
-            font-size: 120%;
-        }
+@media (min-width: 460px) and (max-width : 767px){
+    .warning-box {
+        font-size: 1.2em;
     }
 
-    @media (min-width:993px) {
-        .warning-box {
-            font-size: 1.4em;
-        }
-        
-        body{
-            font-size: 120%;
-        }
+    body{
+        font-size: 110%;
     }
+}    
+
+@media (min-width :768px) and (max-width : 992px) {
+    .warning-box {
+        font-size: 1.3em;
+    }
+
+    body{
+        font-size: 120%;
+    }
+}
+
+@media (min-width:993px) {
+    .warning-box {
+        font-size: 1.4em;
+    }
+
+    body{
+        font-size: 120%;
+    }
+}

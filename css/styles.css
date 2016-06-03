@@ -8131,6 +8131,13 @@ body {
   margin-right: 10px;
 }
 
+/***** Warning Box *****/
+/***** Data preloader *****/
+.data-preloader {
+  margin: 15% 0;
+}
+
+/***** Data preloader *****/
 @media (max-width: 459px) {
   .warning-box {
     font-size: 1em;

@@ -14,9 +14,19 @@
             <script type="text/ng-template" id="profesor.tpl.html">
                 <div id="viewOne">
                     <div class="container">
-                        <div class="progress" ng-show="loading_teacher">
-                            <div class="indeterminate"></div>
-                        </div>
+                        <div class="data-preloader center" ng-show="loading_teacher">
+                            <div class="preloader-wrapper big active">
+                                <div class="spinner-layer spinner-blue-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div><div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
                         <div ng-hide="loading_teacher">
                             <div ng-if="courses_teacher.length > 0">
                                 <div ng-repeat="c in courses_teacher">
@@ -53,9 +63,19 @@
             <script type="text/ng-template" id="estudiante.tpl.html">
                     <div id="viewTwo">
                         <div ng-style="show" class="container">
-                            <div class="progress" ng-show="loading_student">
-                                <div class="indeterminate"></div>
-                            </div>
+                            <div class="data-preloader center">
+                                <div class="preloader-wrapper big active" ng-show="loading_student">
+                                    <div class="spinner-layer spinner-blue-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
                             <div ng-hide="loading_student">
                                 <div ng-if="courses_student.length > 0">
                                     <div ng-repeat="c in courses_student">
