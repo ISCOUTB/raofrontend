@@ -61,50 +61,50 @@
             </script>
 
             <script type="text/ng-template" id="estudiante.tpl.html">
-                    <div id="viewTwo">
-                        <div ng-style="show" class="container">
-                            <div class="data-preloader center">
-                                <div class="preloader-wrapper big active" ng-show="loading_student">
-                                    <div class="spinner-layer spinner-blue-only">
-                                        <div class="circle-clipper left">
-                                            <div class="circle"></div>
-                                        </div><div class="gap-patch">
-                                            <div class="circle"></div>
-                                        </div><div class="circle-clipper right">
-                                            <div class="circle"></div>
+                <div id="viewTwo">
+                    <div ng-style="show" class="container">
+                        <div class="data-preloader center" ng-show="loading_student">
+                            <div class="preloader-wrapper big active">
+                                <div class="spinner-layer spinner-blue-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div><div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                        <div ng-hide="loading_student">
+                            <div ng-if="courses_student.length > 0">
+                                <div ng-repeat="c in courses_student">
+                                    <div class="collection">	
+                                        <div class="collection collection-item avatar">
+                                            <div class="collectiondiv">
+                                                <a ng-model="id" ui-sref="studentcourseview({course : c.nrc})">
+                                                    <i class="fa fa-users circle red"></i>
+                                                    <span class="title">{{c.subject_name}}</span>
+                                                    <p>{{c.nrc}}</p>
+                                                </a>
+                                            </div>    
                                         </div>
                                     </div>
                                 </div>
-                            </div>    
-                            <div ng-hide="loading_student">
-                                <div ng-if="courses_student.length > 0">
-                                    <div ng-repeat="c in courses_student">
-                                        <div class="collection">	
-                                            <div class="collection collection-item avatar">
-                                                <div class="collectiondiv">
-                                                    <a ng-model="id" ui-sref="studentcourseview({course : c.nrc})">
-                                                        <i class="fa fa-users circle red"></i>
-                                                        <span class="title">{{c.subject_name}}</span>
-                                                        <p>{{c.nrc}}</p>
-                                                    </a>
-                                                </div>    
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div ng-show="courses_empty_student">
-                                    <div class="warning-box">
-                                        <p>
-                                            <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                            <span> <strong>No tiene cursos activos actualmente</strong></span>
-                                        </p>
-                                    </div>
+                            </div>
+
+                            <div ng-show="courses_empty_student">
+                                <div class="warning-box">
+                                    <p>
+                                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                        <span> <strong>No tiene cursos activos actualmente</strong></span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </script>
+                </div>
+            </script>
         </div>
     </div>
 </div>

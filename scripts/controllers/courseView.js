@@ -1,50 +1,50 @@
 'use strict';
-raoweb.controller('courseViewCtrl', ['$scope', '$location', '$stateParams', 'courseviewService', 'sessionService', 'loginService', '$state',
-    function ($scope, $location, $stateParams, courseviewService, sessionService, loginService, $state) {
-        var course = $stateParams.course;
-        var user = sessionService.get('user');
+raoweb.controller('CourseViewCtrl', function ($scope, $location, $stateParams, courseviewService, $state) {
+    var course = $stateParams.course;
+    console.log(course);
+    var user = sessionService.get('user');
 
-        if (sessionStorage.length === 0) {
-            $location.path('/login');
+    if (sessionStorage.length === 0) {
+        $location.path('/login');
+    } else {
+        if (sessionService.get('type') === 'teacher') {
+            courseviewService.teachercourseview(course).then(function (response) {
+                if (response.status){
+                    /*swal({
+                        title: "Error",
+                        text: response.status + " - " + response.data,
+                        type: "error",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Aceptar",
+                        closeOnConfirm: false
+                    });*/
+                }else{
+                    returnData(response, course); //call returnData method
+                }
+            });
+
+            //To show statistics 
+            $state.go('courseview',{course:course});
+            $scope.modalStatistics = function(){
+                courseviewService.getattendance(course);
+            };
+
+        } else if (sessionService.get('type') === 'student') {
+            courseviewService.studentstatistics(user, course);
         } else {
-            if (sessionService.get('type') === 'teacher') {
-                courseviewService.teachercourseview(course).then(function (response) {
-                    if (response.status){
-                        /*swal({
-                            title: "Error",
-                            text: response.status + " - " + response.data,
-                            type: "error",
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "Aceptar",
-                            closeOnConfirm: false
-                        });*/
-                    }else{
-                        returnData(response, course); //call returnData method
-                    }
-                });
-                 
-                //To show statistics 
-                $state.go('courseview',{course:course});
-                $scope.modalStatistics = function(){
-                    courseviewService.getattendance(course);
-                };
-                
-            } else if (sessionService.get('type') === 'student') {
-                courseviewService.studentstatistics(user, course);
-            } else {
-                swal({
-                    title: "Error",
-                    text: "401 - Acceso no autorizado",
-                    type: "error",
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Aceptar",
-                    closeOnConfirm: false
-                });
-                loginService.logout();
-            }
+            swal({
+                title: "Error",
+                text: "401 - Acceso no autorizado",
+                type: "error",
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Aceptar",
+                closeOnConfirm: false
+            });
+            loginService.logout();
         }
+    }
 
-        function returnData(response, course) {
+    function returnData(response, course) {
             $scope.loading = false;
 
             var msg = "El curso con NRC " + course + " no existe";
@@ -101,4 +101,4 @@ raoweb.controller('courseViewCtrl', ['$scope', '$location', '$stateParams', 'cou
                 }
             }
         };
-    }]);
+});

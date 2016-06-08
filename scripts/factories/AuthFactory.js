@@ -31,10 +31,8 @@ raoweb.factory('AuthFactory', function ($http, $location, LocalStorageFactory, $
         logout: function () {
             $http.post('http://raoapi.utbvirtual.edu.co:8082/tokenlogout?username='+LocalStorageFactory.get('user')+'&token='+ LocalStorageFactory.get('token'))
                 .success(function(data) {
-                    LocalStorageFactory.destroy('user');
-                    LocalStorageFactory.destroy('token');   
+                    deleteLocalStorage();
                     //console.log(data);
-                    $location.path('/login');
                 })
                 .error(function(err) {
                     //console.log("error " + err);
@@ -48,8 +46,19 @@ raoweb.factory('AuthFactory', function ($http, $location, LocalStorageFactory, $
                         closeOnConfirm: false
                     });
                 });
+        }, 
+        
+        destroyLocalStorage : function(){
+            deleteLocalStorage();
         }
     };
+    
+    function deleteLocalStorage(){
+        LocalStorageFactory.destroy('user');
+        LocalStorageFactory.destroy('token');   
+        //console.log(data);
+        $location.path('/login');
+    }
 });
 
 

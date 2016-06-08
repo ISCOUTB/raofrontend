@@ -43,10 +43,10 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
             
             //Home: teacher course view and student list
             .state('courseview', {
-                url: '/teacher/courseview/:course',
+                url: '/courseview/:course',
                 parent: 'dashboard',
                 templateUrl: 'views/dashboard/courseview.html',
-                controller: 'courseViewCtrl'
+                controller: 'CourseViewCtrl'
             })
             .state('studentlist', {
                 url: '/teacher/studentlist/:course',
@@ -54,14 +54,13 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
                 templateUrl: 'views/dashboard/studentlist.html',
                 controller: 'studentsByCourseCtrl'
             })
-            //Home: student course view
             .state('studentcourseview', {
-                url: '/student/courseview/:course',
+                url: '/course/:course/attendance',
                 parent: 'dashboard',
                 templateUrl: 'views/dashboard/student/courseview.html',
-                controller: 'courseViewCtrl'
+                controller: 'StudentCourseViewCtrl'
             })
-
+            
             .state('studentprofile', {
                 url: '/teacher/studentprofile/:user/course/:course',
                 parent: 'dashboard',

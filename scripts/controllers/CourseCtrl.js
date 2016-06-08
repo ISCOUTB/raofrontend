@@ -1,5 +1,5 @@
 'use strict';	
-raoweb.controller('CourseCtrl' ,function($scope, $location, $http, CourseListFactory) {
+raoweb.controller('CourseCtrl' ,function($scope, $location, $http, CourseListFactory, AuthFactory) {
     /******* Tabs *******/
     $scope.tabs = [{
         title: 'Profesor',
@@ -47,8 +47,8 @@ raoweb.controller('CourseCtrl' ,function($scope, $location, $http, CourseListFac
                 }
             })
             .catch(function(err) {
-                //error(err);
                 console.log("response teacher error", err);
+                error(err);  
             });  
             
         CourseListFactory.studentcourses()
@@ -70,6 +70,7 @@ raoweb.controller('CourseCtrl' ,function($scope, $location, $http, CourseListFac
             })
             .catch(function(err) {
                 console.log("response student error", err);
+                error(err);  
             });  
         }
     
@@ -84,8 +85,8 @@ raoweb.controller('CourseCtrl' ,function($scope, $location, $http, CourseListFac
             closeOnConfirm: false 
         });
 
-        if (msg.status === 401) {
-            //loginService.logout();
+        if(msg.status === 401){
+            AuthFactory.destroyLocalStorage();
         }
     }
 });

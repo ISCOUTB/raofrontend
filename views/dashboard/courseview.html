@@ -1,4 +1,4 @@
-<div class="container listview">
+<!--<div class="container listview">
     <div class="container">
         <div class="card">
             <div class="card-content">
@@ -8,6 +8,79 @@
                 </div>
                 <h5>Listado de estudiantes</h5>
                 <br>
+                <div class="progress" ng-show="loading">
+                    <div class="indeterminate"></div>
+                </div>
+                <div ng-hide="loading">
+                    <div ng-if="students.length > 0">
+                        <div class="row">
+                            <div class="col s12 m6 l6"> 
+                                <form class="forms forms-inline input-field">
+                                    <input type="text" class="input-big width-50" id="query" ng-model="query">
+                                    <label for="query">Buscar</label>
+                                </form>
+                            </div>
+                            <div class="col s6 m3 l3">
+                                <a class="btn waves-effect waves-light backgroundgreen" ui-sref="studentlist({course : nrc})"><i class="fa fa-check"></i> Asistencia</a>
+                            </div>
+                            <div class="col s6 m3 l3">
+                                <a ng-click="modalStatistics();" class="btn waves-effect waves-light red"><i class="fa fa-bar-chart"></i> Estadísticas</a>
+                            </div>
+                        </div>
+
+                        <div ng-repeat="s in students| filter:query | orderBy:'s.name'">
+                            <div class="collection">	
+                                <div class="collection collection-item avatar">
+                                    <div class="col s12 m8 l8 left collectiondiv">
+                                        <a ng-model="id" ui-sref="studentprofile({user: s.id, course: nrc})">
+                                            <i class="fa fa-user circle red"></i>
+                                            <p>{{s.names}} {{s.lastnames}}</p>
+                                            <p class="black-text">{{s.id}}</p>
+                                            <p class="black-text">{{s.email}}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="home" ng-show="students_empty">
+                        <div class="warning-box" id="sensors_warning_box">
+                            <p>
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span> <strong>El curso no tiene estudiantes matriculados</strong></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="modalStatistics" class="modal">
+                        <div class="modal-content">
+                            <div class="row">
+                                <h3 class="center">Estadísticas del curso</h3>
+                                <div class="col l9 push-l1 m10 push-m1 s12">
+                                    <div class="center" id="container" ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a onclick="$('#modalStatistics').closeModal();" class="btn-flat">CERRAR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="container listview">
+    <div class="container">
+        <div class="card">
+            <div class="card-content">
+                <div class="pagetitle">
+                    <a ui-sref="home" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
+                    <h4 class="fontblue">{{subject}} {{nrc}}</h4>
+                </div>
+                
                 <div class="progress" ng-show="loading">
                     <div class="indeterminate"></div>
                 </div>

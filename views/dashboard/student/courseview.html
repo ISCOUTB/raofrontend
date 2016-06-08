@@ -1,19 +1,36 @@
-1<div class="container listview">
+<div class="container listview">
     <div class="container">
-        <div class="card">
-            <div class="card-content">
-                <div class="s12 col">
+        <div class="card row">
+            <div class="col s12">
+                <div class="card-content" >
                     <div class="pagetitle">
-                        <a onclick="window.history.back();" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
-                        <h4 class="fontblue">{{subject}} {{course}}</h4>
+                        <div class="data-preloader center" ng-show="loading">
+                            <div class="preloader-wrapper big active">
+                                <div class="spinner-layer spinner-blue-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div><div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
                     </div>
-                    <h5>Porcentajes de asistencias al curso</h5>
-                    <br>
-                </div>
-                <div class="card-action">
-                    <h5>Asistencias : {{comenum}}</h5>
-                    <h5>Faltas : {{notcomenum}}</h5>
-                    <div id="containerprofile"></div>
+
+                    <div ng-hide="loading">
+                        <div class="pagetitle">
+                            <a onclick="window.history.back();" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
+                            <h4 class="fontblue">{{subject}} {{nrc}}</h4>
+                        </div>
+
+                        <div class="card-action col s8">
+                            <h5>Asistencias : {{come}}</h5>
+                            <h5>Faltas : {{notcome}}</h5>
+                            <div id="statistics_graph" class="col s12 m8 offset-m2"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
