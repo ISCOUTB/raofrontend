@@ -39,6 +39,10 @@ body{
     background-color: $secondary;
 }
 
+.break_word{
+    word-wrap: break-word;
+}
+
 /***** Warning Box *****/
 .warning-box {
     background: #E0717C;

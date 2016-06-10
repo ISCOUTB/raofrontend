@@ -8115,6 +8115,10 @@ body {
   background-color: #0E7049;
 }
 
+.break_word {
+  word-wrap: break-word;
+}
+
 /***** Warning Box *****/
 .warning-box {
   background: #E0717C;
@@ -8470,6 +8474,16 @@ and open the template in the editor.
   font-size: 28px;
 }
 
+.listview .collection .collection-item.avatar p, .listview .collection .collection-item.avatar span {
+  text-transform: none;
+  font-size: 1.2rem;
+}
+
+.listview .collection .collection-item.avatar span {
+  color: #039BE5 !important;
+  font-weight: 500;
+}
+
 .listview .modal {
   width: 100%;
   min-height: auto;
@@ -8483,9 +8497,6 @@ and open the template in the editor.
   .listview .container {
     width: 100%;
   }
-  .listview .collection .collection-item.avatar p {
-    font-size: 1.1rem;
-  }
 }
 
 @media (min-width: 460px) and (max-width: 767px) {
@@ -8495,9 +8506,6 @@ and open the template in the editor.
   }
   .listview .container {
     width: 100%;
-  }
-  .listview .collection .collection-item.avatar p {
-    font-size: 1.1rem;
   }
 }
 
@@ -8509,9 +8517,6 @@ and open the template in the editor.
   .listview .container {
     width: 100%;
   }
-  .listview .collection .collection-item.avatar p {
-    font-size: 1.1rem;
-  }
 }
 
 @media (min-width: 993px) and (max-width: 1200px) {
@@ -8522,9 +8527,6 @@ and open the template in the editor.
   .listview .container {
     width: 100%;
   }
-  .listview .collection .collection-item.avatar p {
-    font-size: 1.2rem;
-  }
 }
 
 @media (min-width: 1201px) {
@@ -8534,9 +8536,6 @@ and open the template in the editor.
   }
   .listview .container {
     width: 80%;
-  }
-  .listview .collection .collection-item.avatar p {
-    font-size: 1.2rem;
   }
 }
 

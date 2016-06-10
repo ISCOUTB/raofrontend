@@ -1,27 +1,26 @@
 'use strict';	
-raoweb.controller('StudentCourseViewCtrl' ,function($http, $scope, $location, $stateParams, LocalStorageFactory, CourseViewFactory, courseviewService, $state) {
+raoweb.controller('StudentCourseViewCtrl' ,function($http, $scope, $location, $stateParams, CourseViewFactory) {
     var course = $stateParams.course;
-    var user = LocalStorageFactory.get('user');
+    var student = $stateParams.student;
 
     if(localStorage.length === 0){
         $location.path('/login');
     }
     else{
         $scope.loading = true;
-        $scope.error = false;
         
-        CourseViewFactory.studentStatistics(user, course)
+        CourseViewFactory.studentStatistics(student, course)
             .then(function(response) {
                 response = response.data;
                 
                 $scope.loading = false;
                 
-                console.log("response studentStatistics", response);
+                //console.log("response studentStatistics", response);
 
                 var msg = "No existe un curso con el NRC " + course;
                 var msg2 = "No tienes acceso a esta información.";
                 var msg3 = "No estas matriculado en este curso";
-                var msg4 = "No existe un estudiante con el código " + user;
+                var msg4 = "No existe un estudiante con el código " + student;
                 
                 if (response !== msg && response !== msg2 && response !== msg3 && response !== msg4){
                     $scope.subject = response.subject;
@@ -116,15 +115,14 @@ raoweb.controller('StudentCourseViewCtrl' ,function($http, $scope, $location, $s
                         confirmButtonText: "Aceptar",   
                         closeOnConfirm: false 
                     });
+                    
                     $location.path('/dashboard/courses');
                 }
                 
-        
             })
             .catch(function(err) {
                 console.log("response courseview error ", err);
                 //error(err);  
             });  
-            
     }
 });

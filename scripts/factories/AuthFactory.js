@@ -6,7 +6,7 @@ raoweb.factory('AuthFactory', function ($http, $location, LocalStorageFactory, $
 //            console.log(token);
             if(token){
                 console.log('ALLOW');
-                $location.path('/dashboard/courses'); 
+                //$location.path('/dashboard/courses'); 
             }else{
                 console.log('DENY');
                 event.preventDefault();
@@ -36,7 +36,6 @@ raoweb.factory('AuthFactory', function ($http, $location, LocalStorageFactory, $
                 })
                 .error(function(err) {
                     //console.log("error " + err);
-                    $location.path('/dashboard/courses'); 
                     swal({
                         title: "Error",
                         text: "No se pudo cerrar sesión correctamente, inténtelo nuevamente",
@@ -45,6 +44,8 @@ raoweb.factory('AuthFactory', function ($http, $location, LocalStorageFactory, $
                         confirmButtonText: "Aceptar",
                         closeOnConfirm: false
                     });
+                    
+                    $location.path('/dashboard/courses'); 
                 });
         }, 
         

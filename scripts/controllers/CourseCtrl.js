@@ -1,5 +1,5 @@
 'use strict';	
-raoweb.controller('CourseCtrl' ,function($scope, $location, $http, CourseListFactory, AuthFactory) {
+raoweb.controller('CourseCtrl' ,function($scope, $location, $http, CourseListFactory, AuthFactory, LocalStorageFactory) {
     /******* Tabs *******/
     $scope.tabs = [{
         title: 'Profesor',
@@ -28,6 +28,9 @@ raoweb.controller('CourseCtrl' ,function($scope, $location, $http, CourseListFac
         $scope.courses_empty_student = false;
         $scope.loading_teacher = true;
         $scope.loading_student = true;
+        
+        var student = LocalStorageFactory.get('user');
+        $scope.student_id = student;
         
         CourseListFactory.teachercourses()
             .then(function(response) {
