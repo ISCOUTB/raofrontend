@@ -1,0 +1,57 @@
+<div class="container listview">
+    <div class="container">
+        <div class="card row">
+            <div class="col s11">
+                <div class="card-content" >
+                    <div class="pagetitle">
+                        <div class="data-preloader center" ng-show="loading">
+                            <div class="preloader-wrapper big active">
+                                <div class="spinner-layer spinner-blue-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div><div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+
+                    <div ng-hide="loading">
+                        <div class="pagetitle">
+                            <a onclick="window.history.back();" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
+                            <h4 class="fontblue">{{subject}} {{nrc}}</h4>
+                        </div>
+
+                        <div class="card-action">
+                            <table class="highlight centered responsive-table">
+                                <thead style='font-weight: bold; font-size: 1.5rem;'> 
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Código</th>
+                                        <th>No. asistencias</th>
+                                        <th>No. faltas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="s in students">
+                                        <td>{{s.student_name}} {{s.student_lastname}}</td>
+                                        <td>{{s.student_id}}</td>
+                                        <td>{{s.attendance_value[0].value}}</td>
+                                        <td>{{s.attendance_value[1].value}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="right" style="color: red; margin: 15px; padding: 5px; font-size: 1.4rem;">
+                                <p><strong>* Se ha tomado {{total}} veces asistencia en este curso</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

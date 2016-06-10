@@ -26,7 +26,7 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'views/dashboard.html',
-                controller: 'dashboardCtrl',
+                controller: 'DashboardCtrl',
                 resolve: {
                     auth: function(AuthFactory) {
                         return AuthFactory.IfAuthenticated();
@@ -48,7 +48,7 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
                 controller: 'CourseViewCtrl'
             })
             .state('studentcourseview', {
-                url: '/student/:student/course/:course/attendance',
+                url: '/student/:student/course/:course/statistics',
                 parent: 'dashboard',
                 templateUrl: 'views/dashboard/student/courseview.html',
                 controller: 'StudentCourseViewCtrl'
@@ -59,7 +59,12 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
                 templateUrl: 'views/dashboard/studentlist.html',
                 controller: 'StudentListCtrl'
             })
-            
+            .state('coursestatistics', {
+                url: '/course/:course/statistics',
+                parent: 'dashboard',
+                templateUrl: 'views/dashboard/coursestatistics.html',
+                controller: 'StatisticsCtrl'
+            })
             
             
             .state('studentprofile', {
