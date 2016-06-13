@@ -8194,15 +8194,6 @@ and open the template in the editor.
   /*****Form*******/
 }
 
-#login-page #utb_logo {
-  width: 45%;
-}
-
-#login-page #logo {
-  width: 30%;
-  margin-top: 15px;
-}
-
 #login-page .card-panel {
   background-color: #E0E0E0 !important;
   background-image: url("../img/textura.png");
@@ -8239,15 +8230,13 @@ and open the template in the editor.
 }
 
 #login-page h5 {
-  margin-bottom: 10px;
-  font-size: 120%;
-  font-weight: 300;
+  font-weight: bold;
 }
 
 @media (max-width: 459px) {
   #login-page .card-panel {
     width: 100%;
-    margin: 27% 0;
+    margin: 50% 0;
   }
   #login-page label, #login-page input[type=text], #login-page input[type=password] {
     font-size: 1.2em;
@@ -8255,12 +8244,16 @@ and open the template in the editor.
   #login-page .btn, #login-page .btn-large {
     font-size: 1.3em;
   }
+  #login-page h5 {
+    margin-top: 4%;
+    font-size: 1.2em;
+  }
 }
 
 @media (min-width: 460px) and (max-width: 767px) {
   #login-page .card-panel {
-    width: 90%;
-    margin: 25% 5%;
+    width: 98%;
+    margin: 32% 5%;
   }
   #login-page label, #login-page input[type=text], #login-page input[type=password] {
     font-size: 1.1em;
@@ -8268,25 +8261,33 @@ and open the template in the editor.
   #login-page .btn, #login-page .btn-large {
     font-size: 1.3em;
   }
+  #login-page h5 {
+    margin-top: 4%;
+    font-size: 1.2em;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
   #login-page .card-panel {
-    width: 80%;
-    margin: 12% 10% 0;
+    width: 90%;
+    margin: 32% 10% 0;
   }
   #login-page label, #login-page input[type=text], #login-page input[type=password] {
     font-size: 1.1em;
   }
   #login-page .btn, #login-page .btn-large {
+    font-size: 1.2em;
+  }
+  #login-page h5 {
+    margin-top: 4%;
     font-size: 1.2em;
   }
 }
 
 @media (min-width: 993px) {
   #login-page .card-panel {
-    width: 70%;
-    margin: 10% 15%;
+    width: 73%;
+    margin: 15%;
   }
   #login-page label {
     font-size: 1.2em;
@@ -8296,6 +8297,13 @@ and open the template in the editor.
   }
   #login-page .btn, #login-page .btn-large {
     font-size: 1.5em;
+  }
+  #login-page #utb_logo {
+    width: 55%;
+  }
+  #login-page h5 {
+    margin-top: 4%;
+    font-size: 1.2em;
   }
 }
 
@@ -8328,10 +8336,6 @@ and open the template in the editor.
   box-shadow: none;
 }
 
-.dashboard .nav-wrapper {
-  padding: 0 30px;
-}
-
 .dashboard .collapsible-header {
   border: none;
   background-color: #044f43;
@@ -8352,17 +8356,31 @@ and open the template in the editor.
 
 @media (max-width: 459px) {
   .dashboard {
+    /** Navbar***/
     /* Logo */
     /* Logo */
     /** Navbar***/
     /*** Footer ***/
     /*** Footer ***/
   }
-  .dashboard nav li a {
-    font-size: 0.8em;
+  .dashboard nav {
+    height: 70px;
   }
-  .dashboard .nav-wrapper img {
-    width: 90px;
+  .dashboard .nav-wrapper {
+    padding: 6px 2px 0 12px;
+  }
+  .dashboard nav li a {
+    font-size: 1.4em;
+    padding: 0 5px 0;
+  }
+  .dashboard #logo_nav {
+    width: 170px;
+    border-right: white 1px solid;
+    padding-right: 12px;
+  }
+  .dashboard .nav-wrapper h5 {
+    margin-top: 7px;
+    font-size: 1.3em;
   }
   .dashboard footer.page-footer {
     text-align: center;
@@ -8375,17 +8393,34 @@ and open the template in the editor.
 
 @media (min-width: 460px) and (max-width: 767px) {
   .dashboard {
+    /** Navbar***/
     /* Logo */
     /* Logo */
     /** Navbar***/
     /*** Footer ***/
     /*** Footer ***/
   }
-  .dashboard nav li a {
-    font-size: 1.1em;
+  .dashboard nav {
+    height: 80px;
   }
-  .dashboard .nav-wrapper img {
-    width: 98px;
+  .dashboard .nav-wrapper {
+    padding: 8px 16px 0;
+  }
+  .dashboard nav ul li a {
+    padding: 0;
+  }
+  .dashboard nav li a {
+    font-size: 1.2em;
+    margin-top: 8px;
+  }
+  .dashboard #logo_nav {
+    width: 200px;
+    border-right: white 1px solid;
+    padding-right: 12px;
+  }
+  .dashboard .nav-wrapper h5 {
+    margin-top: 25px;
+    font-size: 1.4em;
   }
   .dashboard footer.page-footer {
     text-align: center;
@@ -8405,11 +8440,22 @@ and open the template in the editor.
     /*** Footer ***/
     /*** Footer ***/
   }
-  .dashboard nav li a {
-    font-size: 1.5em;
+  .dashboard nav {
+    height: 70px;
   }
-  .dashboard .nav-wrapper img {
-    width: 105px;
+  .dashboard .nav-wrapper {
+    padding: 10px 16px;
+  }
+  .dashboard nav li a {
+    font-size: 1.3em;
+  }
+  .dashboard #logo_nav {
+    width: 160px;
+    border-right: white 1px solid;
+    padding-right: 12px;
+  }
+  .dashboard .nav-wrapper h5 {
+    margin-top: 15px;
   }
   .dashboard footer.page-footer {
     text-align: center;
@@ -8429,11 +8475,22 @@ and open the template in the editor.
     /*** Footer ***/
     /*** Footer ***/
   }
+  .dashboard nav {
+    height: 80px;
+  }
+  .dashboard .nav-wrapper {
+    padding: 10px 16px;
+  }
   .dashboard nav li a {
     font-size: 1.6em;
   }
-  .dashboard .nav-wrapper img {
-    width: 110px;
+  .dashboard #logo_nav {
+    width: 180px;
+    border-right: white 1px solid;
+    padding-right: 5px;
+  }
+  .dashboard .nav-wrapper h5 {
+    margin-top: 18px;
   }
   .dashboard #logo_footer img {
     width: 420px;
@@ -8606,4 +8663,16 @@ and open the template in the editor.
   .coursesList .asistenciadiv a {
     font-size: 1.5rem;
   }
+}
+
+.total {
+  color: red;
+  margin: 15px;
+  padding: 5px;
+  font-size: 1.4rem;
+}
+
+.header {
+  font-weight: bold;
+  font-size: 1.5rem;
 }

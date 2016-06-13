@@ -6,7 +6,7 @@ raoweb.factory('AuthFactory', function ($http, $location, LocalStorageFactory, $
 //            console.log(token);
             if(token){
                 console.log('ALLOW');
-                //$location.path('/dashboard/courses'); 
+                $location.path('/dashboard/courses'); 
             }else{
                 console.log('DENY');
                 event.preventDefault();

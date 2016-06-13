@@ -12,10 +12,6 @@
         box-shadow: none;
     }
 
-    .nav-wrapper{
-        padding: 0 30px;
-    }
-
     .collapsible-header {
         border: none;
         background-color: #044f43;
@@ -50,22 +46,39 @@
     /*** Sticky Footer ***/ 
 
     @media (max-width:459px) {
+        /** Navbar***/
+        nav{
+            height: 70px;
+        }
+        
+        .nav-wrapper{
+            padding: 6px 2px 0 12px;
+        }
+        
         nav li a{
-            font-size: 0.8em;
+            font-size: 1.4em;
+            padding: 0 5px 0
         }
 
         /* Logo */
-        .nav-wrapper img{
-            width: 90px;
+        #logo_nav{
+            width: 170px;
+            border-right: white 1px solid;
+            padding-right: 12px;
         }
+
+        .nav-wrapper h5{
+            margin-top: 7px;
+            font-size: 1.3em;
+        }   
         /* Logo */
         /** Navbar***/
-        
+
         /*** Footer ***/
         footer.page-footer{
             text-align: center;
         } 
-        
+
         #logo_footer img{
             width: 200px;
             padding-top: 10px;
@@ -74,22 +87,43 @@
     }
 
     @media (min-width: 460px) and (max-width : 767px){
+        /** Navbar***/
+        nav{
+            height: 80px;
+        }
+
+        .nav-wrapper{
+            padding: 8px 16px 0;
+        }
+        
+        nav ul li a {
+            padding: 0;
+        }
+
         nav li a{
-            font-size: 1.1em;
+            font-size: 1.2em;
+            margin-top: 8px;
         }
 
         /* Logo */
-        .nav-wrapper img{
-            width: 98px;
+        #logo_nav{
+            width: 200px;
+            border-right: white 1px solid;
+            padding-right: 12px;
         }
+
+        .nav-wrapper h5{
+            margin-top: 25px;
+            font-size: 1.4em;
+        }   
         /* Logo */
         /** Navbar***/
-        
+
         /*** Footer ***/
         footer.page-footer{
             text-align: center;
         } 
-        
+
         #logo_footer img{
             width: 250px;
             padding-top: 10px;
@@ -99,22 +133,36 @@
 
     @media (min-width :768px) and (max-width : 992px) {
         /** Navbar***/
+        nav{
+            height: 70px;
+        }
+
+        .nav-wrapper{
+            padding: 10px 16px;
+        }
+
         nav li a{
-            font-size: 1.5em;
+            font-size: 1.3em;
         }
 
         /* Logo */
-        .nav-wrapper img{
-            width: 105px;
+        #logo_nav{
+            width: 160px;
+            border-right: white 1px solid;
+            padding-right: 12px;
         }
+
+        .nav-wrapper h5{
+            margin-top: 15px;
+        }   
         /* Logo */
         /** Navbar***/
-        
+
         /*** Footer ***/
         footer.page-footer{
             text-align: center;
         } 
-        
+
         #logo_footer img{
             width: 260px;
             padding-top: 10px;
@@ -124,14 +172,28 @@
 
     @media (min-width:993px) {
         /** Navbar***/
+        nav{
+            height: 80px;
+        }
+
+        .nav-wrapper{
+            padding: 10px 16px;
+        }
+
         nav li a{
             font-size: 1.6em;
         }
 
         /* Logo */
-        .nav-wrapper img{
-            width: 110px;
+        #logo_nav{
+            width: 180px;
+            border-right: white 1px solid;
+            padding-right: 5px;
         }
+
+        .nav-wrapper h5{
+            margin-top: 18px;
+        }   
         /* Logo */
         /** Navbar***/
 

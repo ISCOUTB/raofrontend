@@ -21,13 +21,13 @@
 
                     <div ng-hide="loading">
                         <div class="pagetitle">
-                            <a onclick="window.history.back();" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
+                            <a ui-sref="courseview({course : nrc})" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
                             <h4 class="fontblue">{{subject}} {{nrc}}</h4>
                         </div>
 
                         <div class="card-action">
                             <table class="highlight centered responsive-table">
-                                <thead style='font-weight: bold; font-size: 1.5rem;'> 
+                                <thead class="header"> 
                                     <tr>
                                         <th>Nombre</th>
                                         <th>Código</th>
@@ -35,7 +35,7 @@
                                         <th>No. faltas</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody ng-if="total > 0">
                                     <tr ng-repeat="s in students">
                                         <td>{{s.student_name}} {{s.student_lastname}}</td>
                                         <td>{{s.student_id}}</td>
@@ -44,8 +44,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
-                            <div class="right" style="color: red; margin: 15px; padding: 5px; font-size: 1.4rem;">
+
+                            <div class="right total">
                                 <p><strong>* Se ha tomado {{total}} veces asistencia en este curso</strong></p>
                             </div>
                         </div>

@@ -1,17 +1,21 @@
 <title>Cursos</title>
 <div class="dashboard">
-    <nav>
-        <div class="nav-wrapper">
-            <img class="responsive-img" src="img/logo.png" alt="logo">
-            <ul class="right">
-                <li><a ui-sref="home" class="active">Cursos</a></li>
-                <li><a ui-sref="logout" ng-click="logout();">Cerrar sesión</a></li>             
-            </ul>
+    <nav class="nav-wrapper">
+        <div class="row">
+            <img class="responsive-img col s4" src="img/logo_utb_blanco.png" alt="logo" id="logo_nav">
+            <h5 class="col s5">Registro de Asistencias Online</h5>
+            <div class="right">
+                <ul class="col s3">
+                    <!--                <li><a ui-sref="home" class="active">Cursos</a></li>-->
+                    <li><a ui-sref="logout" ng-click="logout();"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>             
+                </ul>
+            </div>
+
         </div>
     </nav>
-    
+
     <main ui-view></main>
-    
+
     <footer class="page-footer">
         <div class="container">
             <div class="row white-text">
@@ -27,8 +31,8 @@
                     <img class="responsive-img" src="img/logo_utb_blanco.png" alt="logo">
                 </div>
             </div>
-          </div>
-          <div class="footer-copyright">
+        </div>
+        <div class="footer-copyright">
             <div class="container">
                 Copyright © 2016 - Cartagena - Bolívar - Colombia
             </div>

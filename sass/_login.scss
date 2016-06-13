@@ -15,16 +15,6 @@ and open the template in the editor.
 }
 
 #login-page {
-    #utb_logo{
-        width: 45%;
-    }
-
-    #logo{
-        width: 30%;
-        margin-top: 15px;
-    }
-
-
     .card-panel {
         background-color: $primary !important;
         background-image: url("../img/textura.png");
@@ -41,17 +31,18 @@ and open the template in the editor.
 
     /* label underline focus color */
     input[type=text], input[type=password], input[type=password]:focus, input[type=text].valid, input[type=password].valid, input[type=text].invalid, input[type=password].invalid, input[type=text]:focus:not([readonly]),
-    input[type=password]:focus:not([readonly]){
+        input[type=password]:focus:not([readonly]){
         @include input-color($dark_primary);
         color: white;
         padding-left: 10px;
         margin-top: 10px;
     }
-    
+
     input[type=password], input[type=password]:focus, input[type=password].valid, input[type=password].invalid,
-    input[type=password]:focus:not([readonly]){
+        input[type=password]:focus:not([readonly]){
         letter-spacing: 3px;
     }
+
     .btn{
         text-transform: none;
     }
@@ -61,16 +52,13 @@ and open the template in the editor.
     /*****Form*******/
 
     h5{
-        margin-bottom: 10px;
-        font-size: 120%;
-        font-weight: 300;
+        font-weight: bold;
     }
-  
 
     @media (max-width:459px) {
         .card-panel{
             width: 100%;
-            margin: 27% 0;
+            margin: 50% 0;
         }
 
         label, input[type=text], input[type=password]{
@@ -79,13 +67,18 @@ and open the template in the editor.
 
         .btn{
             font-size: 1.3em;
+        }
+        
+        h5{
+            margin-top: 4%;
+            font-size: 1.2em;
         }
     }
 
     @media (min-width: 460px) and (max-width : 767px){
         .card-panel{
-            width: 90%;
-            margin: 25% 5%;
+            width: 98%;
+            margin: 32% 5%;
         }
 
         label, input[type=text], input[type=password]{
@@ -95,12 +88,17 @@ and open the template in the editor.
         .btn{
             font-size: 1.3em;
         }
+        
+        h5{
+            margin-top: 4%;
+            font-size: 1.2em;
+        }
     }    
 
     @media (min-width :768px) and (max-width : 992px) {
         .card-panel{
-            width: 80%;
-            margin: 12% 10% 0;
+            width: 90%;
+            margin: 32% 10% 0;
         }
 
         label, input[type=text], input[type=password]{
@@ -110,12 +108,17 @@ and open the template in the editor.
         .btn{
             font-size: 1.2em;
         }
+        
+        h5{
+            margin-top: 4%;
+            font-size: 1.2em;
+        }
     }
 
-    @media (min-width:993px) {
+    @media (min-width:993px) { //and (max-width : 1200px)
         .card-panel{
-            width: 70%;
-            margin: 10% 15%;
+            width: 73%;
+            margin: 15%;
         }
 
         label{
@@ -129,6 +132,14 @@ and open the template in the editor.
         .btn{
             font-size: 1.5em;
         }
+
+        #utb_logo{
+            width: 55%;
+        }
+
+        h5{
+            margin-top: 4%;
+            font-size: 1.2em;
+        }
     }
-    
 }  
