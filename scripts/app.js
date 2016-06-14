@@ -2,7 +2,8 @@
 var raoweb = angular.module('raoweb', ['ui.router']); //define app name
 
 raoweb.config(function ($stateProvider, $urlRouterProvider) {
-    // Send to login if the URL was not found
+    // if the path doesn't match any of the urls you configured
+    // otherwise will take care of routing the user to the specified url
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
@@ -11,14 +12,14 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
                 templateUrl: 'views/login.html',
                 controller: 'AuthCtrl',
                 resolve: {
-                    auth: function(AuthFactory) {
-                        return AuthFactory.IfAuthenticated();
+                    auth: function (AuthFactory) {
+                        return AuthFactory.IfAuthenticated("/login");
                     }
                 }
             })
             .state('logout', {
                 url: '/logout',
-                controller: function(AuthFactory) {
+                controller: function (AuthFactory) {
                     return AuthFactory.logout();
                 }
             })
@@ -26,19 +27,19 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'views/dashboard.html',
-                controller: 'DashboardCtrl',
-                resolve: {
-                    auth: function(AuthFactory) {
-                        return AuthFactory.IfAuthenticated();
-                    }
-                }
+                controller: 'DashboardCtrl'
             })
             //Home: courses list
             .state('courses', {
                 url: '/courses',
                 parent: 'dashboard',
                 templateUrl: 'views/dashboard/courses.html',
-                controller: 'CourseCtrl'
+                controller: 'CourseCtrl',
+                resolve: {
+                    auth: function (AuthFactory) {
+                        return AuthFactory.IfAuthenticated("/dashboard");
+                    }
+                }
             })
             //Home: teacher course view and student list
             .state('courseview', {
@@ -64,20 +65,12 @@ raoweb.config(function ($stateProvider, $urlRouterProvider) {
                 parent: 'dashboard',
                 templateUrl: 'views/dashboard/coursestatistics.html',
                 controller: 'StatisticsCtrl'
-            })
-            
-            
-            .state('studentprofile', {
-                url: '/teacher/studentprofile/:user/course/:course',
-                parent: 'dashboard',
-                templateUrl: 'views/dashboard/student/profile.html',
-                controller: 'studentProfile'
-            })
-
-            .state('studentstudentview', {
-                url: '/student/studentview',
-                parent: 'dashboard',
-                templateUrl: 'views/dashboard/student/studentview.html',
-                controller: 'studentViewCtrl'
             });
-});
+
+});//.run(['$rootScope', function ($rootScope) {
+//        $rootScope.$on('$stateChangeSuccess', function (event, to, toParams, from, fromParams) {
+//            $rootScope.previousState = from;
+//            //console.log($rootScope.previousState);
+//        });
+//    }])
+

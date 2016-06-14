@@ -2,10 +2,15 @@
 <div class="dashboard">
     <nav class="nav-wrapper">
         <div class="row">
-            <img class="responsive-img col s4" src="img/logo_utb_blanco.png" alt="logo" id="logo_nav">
-            <h5 class="col s5">Registro de Asistencias Online</h5>
-            <div class="right">
-                <ul class="col s3">
+            <div class="col s10 m9">
+                <a ui-sref="courses()" class="left"><img class="responsive-img" src="img/logo_utb_blanco.png" alt="logo" id="logo_nav"></a> 
+                <div class="break_word">
+                    <a ui-sref="courses()" class="left"><h5>Registro de Asistencias Online</h5></a> 
+                </div>
+                
+            </div>
+            <div class="col s2 m3">
+                <ul class="right">
                     <!--                <li><a ui-sref="home" class="active">Cursos</a></li>-->
                     <li><a ui-sref="logout" ng-click="logout();"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>             
                 </ul>

@@ -8364,23 +8364,23 @@ and open the template in the editor.
     /*** Footer ***/
   }
   .dashboard nav {
-    height: 70px;
+    height: 60px;
   }
   .dashboard .nav-wrapper {
-    padding: 6px 2px 0 12px;
+    padding: 6px 2px 0 3px;
   }
   .dashboard nav li a {
     font-size: 1.4em;
     padding: 0 5px 0;
   }
   .dashboard #logo_nav {
-    width: 170px;
+    width: 140px;
     border-right: white 1px solid;
     padding-right: 12px;
   }
-  .dashboard .nav-wrapper h5 {
-    margin-top: 7px;
-    font-size: 1.3em;
+  .dashboard .nav-wrapper a h5 {
+    font-size: 1.1em;
+    margin: 18px 0 0 8px;
   }
   .dashboard footer.page-footer {
     text-align: center;
@@ -8401,7 +8401,7 @@ and open the template in the editor.
     /*** Footer ***/
   }
   .dashboard nav {
-    height: 80px;
+    height: 72px;
   }
   .dashboard .nav-wrapper {
     padding: 8px 16px 0;
@@ -8411,16 +8411,17 @@ and open the template in the editor.
   }
   .dashboard nav li a {
     font-size: 1.2em;
-    margin-top: 8px;
+    margin-top: 0;
   }
   .dashboard #logo_nav {
-    width: 200px;
+    width: 161px;
     border-right: white 1px solid;
     padding-right: 12px;
+    margin-right: 18px;
   }
-  .dashboard .nav-wrapper h5 {
-    margin-top: 25px;
-    font-size: 1.4em;
+  .dashboard .nav-wrapper a h5 {
+    margin: 19px 0;
+    font-size: 1.2em;
   }
   .dashboard footer.page-footer {
     text-align: center;
@@ -8454,8 +8455,8 @@ and open the template in the editor.
     border-right: white 1px solid;
     padding-right: 12px;
   }
-  .dashboard .nav-wrapper h5 {
-    margin-top: 15px;
+  .dashboard .nav-wrapper a h5 {
+    margin: 15px;
   }
   .dashboard footer.page-footer {
     text-align: center;
@@ -8489,8 +8490,8 @@ and open the template in the editor.
     border-right: white 1px solid;
     padding-right: 5px;
   }
-  .dashboard .nav-wrapper h5 {
-    margin-top: 18px;
+  .dashboard .nav-wrapper a h5 {
+    margin: 18px;
   }
   .dashboard #logo_footer img {
     width: 420px;
