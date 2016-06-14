@@ -1,7 +1,7 @@
 'use strict';
 raoweb.controller('StudentListCtrl', function ($location, $stateParams, CourseViewFactory, $scope) {
     var course = $stateParams.course;
-    var students_length, attendance;
+    var students_length, attendance, students;
 
     if (localStorage.length === 0) {
         $location.path('/login');
@@ -27,16 +27,26 @@ raoweb.controller('StudentListCtrl', function ($location, $stateParams, CourseVi
 
                         if (response.students !== msg3) {
                             //Student list
-                            $scope.students = response.students;
-
-                            students_length = $scope.students.length;
+                            students_length = response.students.length;
+                            students = new Array(students_length);
+                            
+                            //Refactor students array for using All Selected option
+                            for (var i = 0; i < students_length; i++) {
+                                students[i] = {};
+                                students[i].label = response.students[i];
+                                students[i].checked = false;
+                            }
+                            $scope.students = students;
+                            $scope.allSelected = false; 
+                            
                             attendance = new Array(students_length);
 
                             for (var i = 0; i < students_length; i++) {
                                 attendance[i] = {};
-                                attendance[i].id = $scope.students[i].id;
+                                attendance[i].id = $scope.students[i].label.id;
                                 attendance[i].attendance = 0;
                             }
+
 
                         } else {
                             $scope.students_empty = true;
@@ -60,6 +70,28 @@ raoweb.controller('StudentListCtrl', function ($location, $stateParams, CourseVi
                     //error(err);  
                 });
 
+        //Methods for All Selected option
+        $scope.cbChecked = function () {
+            $scope.allSelected = true;
+            angular.forEach($scope.students, function (v, k) {
+                if (!v.checked) {
+                    $scope.allSelected = false;
+                }
+            });
+        };
+
+        $scope.toggleAll = function () {
+            var bool = true;
+            if ($scope.allSelected) {
+                bool = false;
+            }
+            angular.forEach($scope.students, function (v, k) {
+                v.checked = !bool;
+                $scope.allSelected = !bool;
+            });
+        };
+
+        //Methods for attendance
         $scope.toggleSelection = function toggleSelection(ind) {
             if (attendance[ind].attendance === 0) {
                 attendance[ind].attendance = 1;
@@ -76,12 +108,12 @@ raoweb.controller('StudentListCtrl', function ($location, $stateParams, CourseVi
 
             CourseViewFactory.studentPost(data)
                     .then(function (response) {
-                        swal({   
-                            title: "Asistencia realizada",   
-                            imageUrl: "img/thumbs-up.jpg" 
+                        swal({
+                            title: "Asistencia realizada",
+                            imageUrl: "img/thumbs-up.jpg"
                         });
 
-                        $location.path('dashboard/courseview/'+course);
+                        $location.path('dashboard/courseview/' + course);
                     })
                     .catch(function (err) {
                         console.log("response studentPost error ", err);

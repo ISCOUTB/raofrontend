@@ -25,6 +25,12 @@
                             <h4 class="fontblue">{{subject}} {{nrc}}</h4>
                         </div>
                         <h5>Listado de estudiantes</h5>
+                        
+                        <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" ng-model="allSelected" ng-click="toggleAll()"/>
+                        <label class="black-text" for="filled-in-box">
+                            <span ng-show="allSelected" >Todos seleccionados</span>
+                            <span ng-hide="allSelected" >Seleccionar todos</span>
+                        </label>
 
                         <div class="card-action">
                             <div ng-if="students.length > 0">
@@ -34,10 +40,10 @@
                                             <div class="col s12 m8 l8 left collectiondiv">
                                                 <i class="fa fa-user circle red"></i>
                                                 <form action="#">		
-                                                    <input ng-click="toggleSelection($index)" class="switch filled-in" type="checkbox" id="students{{$index + 1}}"> 
+                                                    <input ng-model="s.checked" ng-click="toggleSelection($index); cbChecked();" class="switch filled-in" type="checkbox" id="students{{$index + 1}}"> 
                                                     <label for="students{{$index + 1}}" class="black-text"> 
-                                                        <p>{{s.names}} {{s.lastnames}} <br>
-                                                            {{s.id}}
+                                                        <p>{{s.label.names}} {{s.label.lastnames}} <br>
+                                                            {{s.label.id}}
                                                         </p>
                                                     </label>
                                                 </form>
@@ -45,6 +51,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <h5 class="right"><strong>Total: {{students.length}}</strong></h5>
                                 <br>
                                 <br>
