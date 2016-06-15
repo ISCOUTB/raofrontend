@@ -36,6 +36,7 @@ raoweb.controller('StudentListCtrl', function ($location, $stateParams, CourseVi
                                 students[i].label = response.students[i];
                                 students[i].checked = false;
                             }
+                            
                             $scope.students = students;
                             $scope.allSelected = false; 
                             
@@ -46,7 +47,6 @@ raoweb.controller('StudentListCtrl', function ($location, $stateParams, CourseVi
                                 attendance[i].id = $scope.students[i].label.id;
                                 attendance[i].attendance = 0;
                             }
-
 
                         } else {
                             $scope.students_empty = true;

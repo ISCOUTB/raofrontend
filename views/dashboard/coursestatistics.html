@@ -1,7 +1,7 @@
-<div class="container listview">
+<div class="container courseStatistics">
     <div class="container">
         <div class="card row">
-            <div class="col s11">
+            <div class="col s12">
                 <div class="card-content" >
                     <div class="pagetitle">
                         <div class="data-preloader center" ng-show="loading">
@@ -16,6 +16,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <p>Esto podría demorar un poco</p>
                         </div>   
                     </div>
 
@@ -26,7 +27,15 @@
                         </div>
 
                         <div class="card-action">
-                            <table class="highlight centered responsive-table">
+                            <h5>Gráfica con porcentajes de asistencias</h5>
+                            <div id="attendance_graph"></div>
+                            <div class="nota">
+                                <p>* Siendo los porcentajes (%) calculados usando el número de veces que la persona asistió a clase y el número total de veces que se tomó asistencia en el curso</p>
+                                <br>
+                            </div>
+
+                            <h5>Tabla resumen de asistencias y faltas</h5>
+                            <table class="striped centered responsive-table bordered">
                                 <thead class="header"> 
                                     <tr>
                                         <th>Nombre</th>
@@ -44,9 +53,10 @@
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <div class="right total">
-                                <p><strong>* Se ha tomado {{total}} veces asistencia en este curso</strong></p>
+                            <br>
+                            <div class="nota">
+                                <p>* Se ha tomado {{total}} veces asistencia en este curso</p>
+                                <br>
                             </div>
                         </div>
                     </div>
@@ -54,4 +64,4 @@
             </div>
         </div>
     </div>
-</div>  
+</div>

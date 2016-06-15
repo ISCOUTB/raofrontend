@@ -52,26 +52,6 @@
   text-transform: none;
 }
 
-#courses .collectiondiv, #courses .asistenciadiv {
-  margin: 5px 0;
-}
-
-#courses .collectiondiv a {
-  text-align: left;
-  letter-spacing: 1px;
-}
-
-#courses .collectiondiv p {
-  margin-bottom: 0;
-  font-size: 1.4rem;
-}
-
-#courses #container {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
-
 @media (max-width: 459px) {
   #courses .card-panel {
     margin: 5% 0;
@@ -126,9 +106,6 @@
   #courses #profesor {
     margin: 10% 0;
   }
-  #courses .asistenciadiv a {
-    font-size: 1.4rem;
-  }
 }
 
 @media (min-width: 993px) {
@@ -156,8 +133,5 @@
   #courses #profesor {
     margin: 6% 12.5%;
     width: 75%;
-  }
-  #courses .asistenciadiv a {
-    font-size: 1.5rem;
   }
 }

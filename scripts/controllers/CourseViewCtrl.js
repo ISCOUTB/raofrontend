@@ -28,7 +28,6 @@ raoweb.controller('CourseViewCtrl', function ($http, $scope, $location, $statePa
                     if (response.students !== msg3) {
                         //Student list
                         $scope.students = response.students;
-
                     } else {
                         $scope.students_empty = true;
                     }

@@ -8499,100 +8499,100 @@ and open the template in the editor.
   }
 }
 
-.listview {
+.listView {
   /* label color */
   /* label underline focus color */
   /*Modal*/
 }
 
-.listview .btn:hover, .listview .btn-large:hover {
+.listView .btn:hover, .listView .btn-large:hover {
   background-color: #0E7049;
 }
 
-.listview .input-field label {
+.listView .input-field label {
   color: #0E7049;
   font-size: 1.2rem;
 }
 
-.listview .input-field input[type=text]:focus {
+.listView .input-field input[type=text]:focus {
   border-bottom: 1px solid #0E7049;
   font-size: 1.3rem;
 }
 
-.listview .pagetitle a {
+.listView .pagetitle a {
   margin-right: 10px;
 }
 
-.listview [type="checkbox"].filled-in:checked + label:after {
+.listView [type="checkbox"].filled-in:checked + label:after {
   background-color: #039BE5;
   border: 3px solid #039BE5;
 }
 
-.listview .collection .collection-item.avatar i.circle {
+.listView .collection .collection-item.avatar i.circle {
   font-size: 28px;
 }
 
-.listview .collection .collection-item.avatar p, .listview .collection .collection-item.avatar span {
+.listView .collection .collection-item.avatar p, .listView .collection .collection-item.avatar span {
   text-transform: none;
   font-size: 1.2rem;
 }
 
-.listview .collection .collection-item.avatar span {
+.listView .collection .collection-item.avatar span {
   color: #039BE5 !important;
   font-weight: 500;
 }
 
-.listview .modal {
+.listView .modal {
   width: 100%;
   min-height: auto;
   padding-top: 10px;
 }
 
 @media (max-width: 459px) {
-  .listview .card {
+  .listView .card {
     margin: 15px 0;
   }
-  .listview .container {
+  .listView .container {
     width: 100%;
   }
 }
 
 @media (min-width: 460px) and (max-width: 767px) {
-  .listview .card {
+  .listView .card {
     padding-left: 15px;
     margin: 15px 0;
   }
-  .listview .container {
+  .listView .container {
     width: 100%;
   }
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
-  .listview .card {
+  .listView .card {
     padding-left: 25px;
     margin: 35px 0;
   }
-  .listview .container {
+  .listView .container {
     width: 100%;
   }
 }
 
 @media (min-width: 993px) and (max-width: 1200px) {
-  .listview .card {
+  .listView .card {
     padding-left: 25px;
     margin: 45px 0;
   }
-  .listview .container {
+  .listView .container {
     width: 100%;
   }
 }
 
 @media (min-width: 1201px) {
-  .listview .card {
+  .listView .card {
     padding-left: 25px;
     margin: 45px 0;
   }
-  .listview .container {
+  .listView .container {
     width: 80%;
   }
 }
@@ -8666,14 +8666,59 @@ and open the template in the editor.
   }
 }
 
-.total {
-  color: red;
-  margin: 15px;
-  padding: 5px;
-  font-size: 1.4rem;
+/*** Course Statistics ***/
+.courseStatistics .pagetitle a {
+  margin-right: 10px;
 }
 
-.header {
+.courseStatistics .card {
+  margin: 45px 0;
+}
+
+.courseStatistics .nota {
+  margin: 15px;
+  padding: 5px;
+  font-size: 120%;
+  font-weight: bold;
+  text-align: right;
+}
+
+.courseStatistics .header {
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+.courseStatistics h5 {
+  text-decoration: underline;
+  color: red;
+}
+
+@media (max-width: 459px) {
+  .courseStatistics .container {
+    width: 98%;
+  }
+  .courseStatistics table.centered thead tr th {
+    font-size: 0.8em;
+  }
+}
+
+@media (min-width: 460px) and (max-width: 767px) {
+  .courseStatistics .container {
+    width: 98%;
+  }
+  .courseStatistics table.centered thead tr th {
+    font-size: 0.8em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .courseStatistics table.centered thead tr th {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 993px) {
+  .courseStatistics table.centered thead tr th {
+    font-size: 1em;
+  }
 }

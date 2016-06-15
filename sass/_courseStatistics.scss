@@ -1,11 +1,61 @@
-.total{
-    color: red; 
-    margin: 15px; 
-    padding: 5px; 
-    font-size: 1.4rem;
-}
+/*** Course Statistics ***/
+.courseStatistics{
+    .pagetitle a {
+        margin-right: 10px;
+    }
 
-.header{
-    font-weight: bold; 
-    font-size: 1.5rem;
+    .card {
+        margin: 45px 0;
+    }
+
+    .nota{
+        margin: 15px; 
+        padding: 5px; 
+        font-size: 120%;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .header{
+        font-weight: bold; 
+        font-size: 1.5rem;
+    }
+
+    h5{
+        text-decoration: underline;
+        color: red;
+    }
+
+
+    @media (max-width:459px) {
+        .container{
+            width: 98%;
+        }
+
+        table.centered thead tr th{
+            font-size: 0.8em;
+        }
+    }
+
+    @media (min-width: 460px) and (max-width : 767px){
+        .container{
+            width: 98%;
+        }
+
+        table.centered thead tr th{
+            font-size: 0.8em;
+        }
+    }    
+
+    @media (min-width :768px) and (max-width : 992px) {
+        table.centered thead tr th{
+            font-size: 1em;
+        }
+    }
+
+    @media (min-width:993px) {
+        table.centered thead tr th{
+            font-size: 1em;
+        }
+    }
 }

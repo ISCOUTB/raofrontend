@@ -23,23 +23,7 @@ raoweb.controller('StudentCourseViewCtrl' ,function($http, $scope, $location, $s
                 var msg4 = "No existe un estudiante con el código " + student;
                 
                 if (response !== msg && response !== msg2 && response !== msg3 && response !== msg4){
-                    $scope.subject = response.subject;
-                    $scope.nrc = response.nrc;
-                    
-                    var attendance_array = new Array();  
-                    
-                    //Attendance percentages
-                    var attendance = response.attendance;
-                    
-                    //Attendance values
-                    $scope.come = attendance.value[0].value;
-                    $scope.notcome = attendance.value[1].value;
-                   
-                    for (var i = 0; i < attendance.percent.length; i++) {
-                        attendance_array.push([attendance.percent[i].key, attendance.percent[i].value]);
-                    }
-                    
-                    // draw chart 
+                    // draw chart
                     $('#statistics_graph').highcharts({
                         chart: {
                             plotBackgroundColor: null,
@@ -105,6 +89,23 @@ raoweb.controller('StudentCourseViewCtrl' ,function($http, $scope, $location, $s
                             data: attendance_array
                         }]
                     });
+                    
+                    $scope.subject = response.subject;
+                    $scope.nrc = response.nrc;
+                    
+                    var attendance_array = new Array();  
+                    
+                    //Attendance percentages
+                    var attendance = response.attendance;
+                    
+                    //Attendance values
+                    $scope.come = attendance.value[0].value;
+                    $scope.notcome = attendance.value[1].value;
+                   
+                    for (var i = 0; i < attendance.percent.length; i++) {
+                        attendance_array.push([attendance.percent[i].key, attendance.percent[i].value]);
+                    }
+                    
                 
                 }else{
                     swal({   
