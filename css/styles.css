@@ -8678,7 +8678,7 @@ and open the template in the editor.
 .courseStatistics .nota {
   margin: 15px;
   padding: 5px;
-  font-size: 120%;
+  font-size: 100%;
   font-weight: bold;
   text-align: right;
 }
@@ -8689,8 +8689,16 @@ and open the template in the editor.
 }
 
 .courseStatistics h5 {
-  text-decoration: underline;
-  color: red;
+  /*        text-decoration: underline;
+        color: red;*/
+  text-align: center;
+}
+
+.courseStatistics .subtitulos {
+  background-color: #E3F2FD;
+  height: 50px;
+  width: 100%;
+  padding: 2px;
 }
 
 @media (max-width: 459px) {

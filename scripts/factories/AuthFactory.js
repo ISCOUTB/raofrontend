@@ -9,7 +9,6 @@ raoweb.factory('AuthFactory', function ($http, $location, LocalStorageFactory, $
                 
                 if(url === "/login"){
                     $location.path('/dashboard/courses'); 
-                    console.log($location.path('/dashboard/courses'));
                 }
             } else {
                 console.log('DENY');

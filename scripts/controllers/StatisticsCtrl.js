@@ -53,7 +53,7 @@ raoweb.controller('StatisticsCtrl', function ($location, $stateParams, CourseVie
                             showHorizontalLines: true,
                             animation: true,
                             animationOffset: 0,
-                            animationRepeat: true,
+                            animationRepeat: false,
                             showArrows: false,
                             labelsAboveBars: false
                         };
