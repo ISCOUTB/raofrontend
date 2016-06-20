@@ -8559,7 +8559,7 @@ and open the template in the editor.
 
 @media (min-width: 460px) and (max-width: 767px) {
   .listView .card {
-    padding-left: 15px;
+    padding: 0 15px;
     margin: 15px 0;
   }
   .listView .container {
@@ -8569,7 +8569,7 @@ and open the template in the editor.
 
 @media (min-width: 768px) and (max-width: 992px) {
   .listView .card {
-    padding-left: 25px;
+    padding: 0 25px;
     margin: 35px 0;
   }
   .listView .container {
@@ -8579,7 +8579,7 @@ and open the template in the editor.
 
 @media (min-width: 993px) and (max-width: 1200px) {
   .listView .card {
-    padding-left: 25px;
+    padding: 0 20px;
     margin: 45px 0;
   }
   .listView .container {
@@ -8589,7 +8589,7 @@ and open the template in the editor.
 
 @media (min-width: 1201px) {
   .listView .card {
-    padding-left: 25px;
+    padding: 0 20px;
     margin: 45px 0;
   }
   .listView .container {

@@ -1,47 +1,41 @@
 <div class="container listView">
-    <div class="container">
-        <div class="card row">
-            <div class="col s11">
-                <div class="card-content" >
-                    <div class="pagetitle">
-                        <div class="data-preloader center" ng-show="loading">
-                            <div class="preloader-wrapper big active">
-                                <div class="spinner-layer spinner-blue-only">
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div><div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div><div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
-                                </div>
+    <div class="card row">
+        <div class="card-content" >
+            <div class="pagetitle">
+                <div class="data-preloader center" ng-show="loading">
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div><div class="gap-patch">
+                                <div class="circle"></div>
+                            </div><div class="circle-clipper right">
+                                <div class="circle"></div>
                             </div>
-                        </div>   
-                    </div>
-
-                    <div ng-hide="loading">
-                        <div class="pagetitle">
-                            <a onclick="window.history.back();" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
-                            <h4 class="fontblue">{{subject}} {{nrc}}</h4>
-                        </div>
-
-                        <div class="card-action row">
-                            <div class=" col s4">
-                                <h5>Asistencias : {{come}}</h5>
-                                <h5>Faltas : {{notcome}}</h5>
-                            </div>
-                            <div class=" col s8 m3 center">
-                                <div id="statistics_graph" data-dimension="250" data-info="% Asistencias" data-width="30" data-fontsize="42"
-                                     data-fgcolor="#7ea568" data-bgcolor="#eee" data-fill="#ddd" class=" col s4 offset-s2">
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="row center">
-                            <p>* Siendo los porcentajes (%) calculados usando el número de veces que la persona asistió a clase y el número total de veces que se tomó asistencia en el curso</p>
                         </div>
                     </div>
+                </div>   
+            </div>
+
+            <div ng-hide="loading">
+                <div class="pagetitle">
+                    <a onclick="window.history.back();" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
+                    <h4 class="fontblue">{{subject}} {{nrc}}</h4>
                 </div>
+
+                <div class="card-action row">
+                    <div class=" col s4">
+                        <h5>Asistencias : {{come}}</h5>
+                        <h5>Faltas : {{notcome}}</h5>
+                    </div>
+                    <div class=" col s8 m3 center">
+                        <div id="statistics_graph" data-dimension="250" data-info="% Asistencias" data-width="30" data-fontsize="42"
+                             data-fgcolor="#7ea568" data-bgcolor="#eee" data-fill="#ddd" class=" col s4 offset-s2">
+                        </div>
+                    </div> 
+                </div>
+                <p>* Siendo los porcentajes (%) calculados usando el número de veces que la persona asistió a clase y el número total de veces que se tomó asistencia en el curso</p>
             </div>
         </div>
     </div>
-</div>  
+</div>
