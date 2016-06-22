@@ -3,6 +3,7 @@ raoweb.controller('StatisticsCtrl', function ($location, $stateParams, CourseVie
     var course = $stateParams.course;
     var subject, nrc;
     var students, students_length, students_name, students_came_attendance_percent;
+    var uri="";
 
     if (localStorage.length === 0) {
         $location.path('/login');
@@ -10,84 +11,129 @@ raoweb.controller('StatisticsCtrl', function ($location, $stateParams, CourseVie
         $scope.loading = true;
 
         CourseViewFactory.getAttendance(course)
-                .then(function (response) {
-                    response = response.data;
-                    //console.log("response getAttendance", response);
+            .then(function (response) {
+                response = response.data;
+                //console.log("response getAttendance", response);
 
-                    var msg = "No existe un curso con el NRC " + course;
+                var msg = "No existe un curso con el NRC " + course;
 
-                    subject = response.subject;
-                    nrc = response.nrc;
+                subject = response.subject;
+                nrc = response.nrc;
 
-                    $scope.loading = false;
-                    $scope.subject = subject;
-                    $scope.nrc = nrc;
+                $scope.loading = false;
+                $scope.subject = subject;
+                $scope.nrc = nrc;
+                
+                //Graph to image
+                var node = document.getElementById('node');
+                
+                domtoimage.toPng(node)
+                    .then(function (dataUrl) {
+        //                var img = new Image();
+        //                img.src = dataUrl;
+        //                document.body.appendChild(img);
+                          uri = dataUrl;
+                    })
+                    .catch(function (error) {
+                        console.error('oops, something went wrong!', error);
+                    });
 
-                    if (response !== msg) {
-                        students = response.students;
-                        $scope.students = students;
-                        $scope.total = $scope.students[0].attendance_value[0].value + $scope.students[0].attendance_value[1].value;
+                if (response !== msg) {
+                    //-------- Dropdown --------//
+                    $scope.items = [
+                        {text: "Informe en PDF"},
+                        {text: "Gráfico en PNG"},
+                        {text: "Tabla en Excel"}
+                    ];
 
-                        students_length = students.length;
+                    $('.dropdown-button').dropdown({
+                        belowOrigin: true,
+                        alignment: 'left',
+                        inDuration: 200,
+                        outDuration: 150,
+                        constrain_width: true,
+                        hover: false,
+                        gutter: 1
+                    });
 
-                        students_name = new Array(students_length);
-                        students_came_attendance_percent = new Array(students_length);
-
-                        for (var i = 0; i < students_length; i++) {
-                            students_name[i] = response.students[i].student_name + " " + response.students[i].student_lastname;
-                            students_came_attendance_percent[i] = response.students[i].attendance_percent[0].value;
+                    $scope.setOption = function(i){
+                        switch(i){
+                            case 0:
+                                download_PDF();
+                                break;
+                            case 1:
+                                download_PNG(i);
+                                break;
+                            case 2:
+                                download_Excel(i);
+                                break;
                         }
+                    };
+                    //-------- Dropdown --------//
 
-                        //console.log("students_name", students_name);
-                        //console.log("students_came_attendance_percent", students_came_attendance_percent);
+                    students = response.students;
+                    $scope.students = students;
+                    $scope.total = $scope.students[0].attendance_value[0].value + $scope.students[0].attendance_value[1].value;
 
-                        //Chart data
-                        var axisY = students_name; //[ "Apple", "Orange", "Banana", "Tomato", "Milk", "Potato"];
-                        var axisX = ["10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"];
-                        var barsValue = students_came_attendance_percent; //[50, 61, 93, 76, 5, 13];
+                    students_length = students.length;
 
-                        var data = {
-                            "axisY": axisY, // Data for axis Y labels
-                            "axisX": axisX, // Data for axis X labels
-                            "bars": barsValue       // Data for bars value
-                        };
+                    students_name = new Array(students_length);
+                    students_came_attendance_percent = new Array(students_length);
 
-                        var options = {
-                            data: data,
-                            showValues: true,
-                            showHorizontalLines: true,
-                            animation: true,
-                            animationOffset: 0,
-                            animationRepeat: false,
-                            showArrows: false,
-                            labelsAboveBars: false
-                        };
-
-                        var $myChart = $('#attendance_graph').rumcaJS(options);      // Initialization horizontal chart.
-
-                    } else {
-                        swal({
-                            title: "Error",
-                            text: response,
-                            type: "error",
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "Aceptar",
-                            closeOnConfirm: false
-                        });
-
-                        $location.path('/dashboard/courses');
+                    for (var i = 0; i < students_length; i++) {
+                        students_name[i] = response.students[i].student_name + " " + response.students[i].student_lastname;
+                        students_came_attendance_percent[i] = response.students[i].attendance_percent[0].value;
                     }
 
-                })
-                .catch(function (err) {
-                    console.log("response getAttendance error ", err);
-                    //error(err);  
-                });
+                    //console.log("students_name", students_name);
+                    //console.log("students_came_attendance_percent", students_came_attendance_percent);
+
+                    //Chart data
+                    var axisY = students_name; //[ "Apple", "Orange", "Banana", "Tomato", "Milk", "Potato"];
+                    var axisX = ["10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%"];
+                    var barsValue = students_came_attendance_percent; //[50, 61, 93, 76, 5, 13];
+
+                    var data = {
+                        "axisY": axisY, // Data for axis Y labels
+                        "axisX": axisX, // Data for axis X labels
+                        "bars": barsValue       // Data for bars value
+                    };
+
+                    var options = {
+                        data: data,
+                        showValues: true,
+                        showHorizontalLines: true,
+                        animation: true,
+                        animationOffset: 0,
+                        animationRepeat: false,
+                        showArrows: false,
+                        labelsAboveBars: false
+                    };
+
+                    var $myChart = $('#attendance_graph').rumcaJS(options);      // Initialization horizontal chart.
+
+                } else {
+                    swal({
+                        title: "Error",
+                        text: response,
+                        type: "error",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Aceptar",
+                        closeOnConfirm: false
+                    });
+
+                    $location.path('/dashboard/courses');
+                }
+
+            })
+            .catch(function (err) {
+                console.log("response getAttendance error ", err);
+                //error(err);  
+            });
+   
     }
-    ;
-
-    $scope.download_PNG = function () {
-
+    
+    function download_PDF() {
         //Set Date
         var monthNames = [
             "Enero", "Febrero", "Marzo",
@@ -123,10 +169,10 @@ raoweb.controller('StatisticsCtrl', function ($location, $stateParams, CourseVie
             }
         }
 
-        console.log("body", body);
+        //console.log("body", body);
 
         var docDefinition = {
-            pageMargins: [ 40, 60, 40, 60 ],
+            pageMargins: [40, 60, 40, 60],
             footer: function (currentPage, pageCount) {
                 return {
                     style: 'footer',
@@ -167,7 +213,7 @@ raoweb.controller('StatisticsCtrl', function ($location, $stateParams, CourseVie
                     stack: [
                         {text: [{text: ' Nombre de asignatura: ', bold: true}, subject + " " + nrc]}
                     ]
-                }, 
+                },
                 {
                     style: 'table',
                     table: {
@@ -198,7 +244,7 @@ raoweb.controller('StatisticsCtrl', function ($location, $stateParams, CourseVie
                     margin: [30, 10, 0, 10],
                     alignment: 'center',
                     fontSize: 11
-		},
+                },
                 footer: {
                     alignment: 'center'
                 }
@@ -206,6 +252,21 @@ raoweb.controller('StatisticsCtrl', function ($location, $stateParams, CourseVie
         };
 
         pdfMake.createPdf(docDefinition).open();
-    };
+    }
+    
+    function download_Excel(i){
+        var uri = $("#statistics").battatech_excelexport({
+            containerid: "statistics"
+            , datatype: 'table'
+            , returnUri: true
+        });
+        
+        $("#"+ i).attr('download', 'Estadísticas ' + subject + " " + nrc + '.xls').attr('href', uri).attr('target', '_blank');
+    }
+    
+    function download_PNG(i){
+        if (uri !== ""){
+            $("#"+ i).attr('download', 'Estadísticas ' + subject + " " + nrc + '.png').attr('href', uri).attr('target', '_blank');    
+        }
+    }
 });
-

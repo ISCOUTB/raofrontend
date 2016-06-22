@@ -8094,7 +8094,7 @@ and open the template in the editor.
 */
 @font-face {
   font-family: 'febrero';
-  src: url("../font/febrero/Febrero-Light.otf");
+  src: url("../fonts/febrero/Febrero-Light.otf");
 }
 
 body {

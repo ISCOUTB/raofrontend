@@ -75,7 +75,7 @@ raoweb.controller('CourseCtrl' ,function($scope, $location, $http, CourseListFac
                 console.log("response student error", err);
                 error(err);  
             });  
-        }
+    }
     
     function error(msg) {
         var message = msg.status + " - " + msg.data;     

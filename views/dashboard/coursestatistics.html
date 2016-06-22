@@ -24,25 +24,33 @@
                         <div class="pagetitle">
                             <a ui-sref="courseview({course : nrc})" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i></a> 
                             <h4 class="fontblue">{{subject}} {{nrc}}</h4>
-                            <input id="course" type="hidden" value="{{subject}}-{{nrc}}">
                         </div>
 
                         <div class="card-action">
-                            <a ng-click="download_PNG();" class="btn waves-effect waves-light red right" href="#" download="">
-                                <i class="fa fa-download" aria-hidden="true"></i>
-                                Descargar informe
+                            <!-- Dropdown Trigger -->                            
+                            <a  class="dropdown-button btn waves-effect waves-light red right" href="#" data-activates="options">
+                                <i class="fa fa-download" aria-hidden="true"></i> Descargar
                             </a>
+                            <!-- Dropdown Structure -->
+
+                            <ul id="options" class="dropdown-content">
+                                <li ng-repeat="item in items"><a id="{{$index}}" ng-click="setOption($index)" download="" href="#">{{item.text}}</a></li>    
+                            </ul> 
+                            
                             <br><br><br>
-                            <div class="subtitulos">
-                                <h5>Gráfica con porcentajes de asistencias</h5>
-                            </div>
+                            
+                            <div id="node">
+                                <div class="subtitulos">
+                                    <h5>Gráfica con porcentajes de asistencias</h5>
+                                </div>
 
-                            <div id="attendance_graph"></div>
+                                <div id="attendance_graph"></div>
 
-                            <div class="nota">
-                                <br>
-                                <p>* Siendo los porcentajes (%) calculados usando el número de veces que la persona asistió a clase y el número total de veces que se tomó asistencia en el curso</p>
-                                <br>
+                                <div class="nota">
+                                    <br>
+                                    <p>* Siendo los porcentajes (%) calculados usando el número de veces que la persona asistió a clase y el número total de veces que se tomó asistencia en el curso</p>
+                                    <br>
+                                </div>
                             </div>
 
                             <div class="subtitulos">
@@ -82,24 +90,3 @@
         </div>
     </div>
 </div>
-
-<script>
-            $("#download_statistics").on('click', function () {
-                var uri = $("#statistics").battatech_excelexport({
-                    containerid: "statistics"
-                    , datatype: 'table'
-                    , returnUri: true
-                });
-
-                var curso = $("#course").val();
-
-                console.log(curso);
-                $(this).attr('download', 'Estadísticas ' + curso + '.xls').attr('href', uri).attr('target', '_blank');
-            });
-
-
-
-</script>
-
-
-
