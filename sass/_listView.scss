@@ -27,13 +27,12 @@
     .collection .collection-item.avatar i.circle {
         font-size: 28px;
     }
-    
+
     .collection .collection-item.avatar p, .collection .collection-item.avatar span{
         text-transform: none;
         font-size: 1.2rem;
     }
-    
-    
+
     .collection .collection-item.avatar span{
         color: #039BE5 !important;
         font-weight: 500;
@@ -76,6 +75,10 @@
         .container{
             width: 100%;
         }
+
+        .collection .collection-item.avatar {
+            padding: 20px 76px 0;
+        }
     }
 
     @media (min-width:993px) and (max-width : 1200px){
@@ -86,6 +89,10 @@
         .container{
             width: 100%;
         }
+
+        .collection .collection-item.avatar {
+            padding: 20px 76px 0;
+        }
     }
 
     @media (min-width : 1201px){
@@ -95,6 +102,10 @@
         }
         .container{
             width: 80%;
+        }
+
+        .collection .collection-item.avatar {
+            padding: 20px 76px 0;
         }
     }
 

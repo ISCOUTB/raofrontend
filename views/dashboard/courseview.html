@@ -19,7 +19,7 @@
 
             <div ng-hide="loading">
                 <div class="pagetitle">
-                    <a onclick="window.history.back();" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i> </a> 
+                    <a onclick="window.history.back();" class="left"><i class="fa fa-arrow-circle-left fa-2x icon_align"></i> </a> 
                     <h4 class="fontblue">{{subject}} {{nrc}}</h4>
                 </div>
                 <h5>Listado de estudiantes</h5>
@@ -33,11 +33,11 @@
                                     <label for="query">Buscar</label>
                                 </form>
                             </div>
-                            <div class="col s6 m1 l1">
-                                <a class="btn waves-effect waves-light backgroundgreen" ui-sref="studentlist({course : nrc})">Asistencia</a>
+                            <div class="col s6 offset-m1 m2 offset-l1 l2">
+                                <a class="btn waves-effect waves-light backgroundgreen" ui-sref="studentlist({course : nrc})"><i class="fa fa-check-square-o"></i></a>
                             </div>
-                            <div class="col s6 offset-m2 m1 offset-l2 l1">
-                                <a class="btn waves-effect waves-light red" ui-sref="coursestatistics({course : nrc})"><i class="fa fa-bar-chart"></i> Estadísticas</a>
+                            <div class="col s6 m2 l2">
+                                <a class="btn waves-effect waves-light red" ui-sref="coursestatistics({course : nrc})"><i class="fa fa-bar-chart"></i></a>
                             </div>
                         </div>
                         <div ng-repeat="s in students| filter:query | orderBy:'s.name'">
@@ -58,7 +58,7 @@
                 <div ng-show="students_empty">
                     <div class="warning-box">
                         <p>
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <i class="fa fa-info-circle"></i>
                             <span> <strong>No hay estudiantes matriculados en el curso</strong></span>
                         </p>
                     </div>

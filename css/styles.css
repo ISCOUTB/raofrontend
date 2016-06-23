@@ -8119,6 +8119,10 @@ body {
   word-wrap: break-word;
 }
 
+.icon_align {
+  vertical-align: middle;
+}
+
 /***** Warning Box *****/
 .warning-box {
   background: #E0717C;
@@ -8575,6 +8579,9 @@ and open the template in the editor.
   .listView .container {
     width: 100%;
   }
+  .listView .collection .collection-item.avatar {
+    padding: 20px 76px 0;
+  }
 }
 
 @media (min-width: 993px) and (max-width: 1200px) {
@@ -8585,6 +8592,9 @@ and open the template in the editor.
   .listView .container {
     width: 100%;
   }
+  .listView .collection .collection-item.avatar {
+    padding: 20px 76px 0;
+  }
 }
 
 @media (min-width: 1201px) {
@@ -8594,6 +8604,9 @@ and open the template in the editor.
   }
   .listView .container {
     width: 80%;
+  }
+  .listView .collection .collection-item.avatar {
+    padding: 20px 76px 0;
   }
 }
 
