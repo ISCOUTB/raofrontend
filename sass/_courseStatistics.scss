@@ -11,14 +11,12 @@
     .nota{
         margin: 15px; 
         padding: 5px; 
-        font-size: 100%;
         font-weight: bold;
         text-align: right;
     }
 
     .header{
         font-weight: bold; 
-        font-size: 1.5rem;
     }
 
     h5{
@@ -34,13 +32,17 @@
         padding: 2px;
     }
     
+    .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 100%;
+        font-size: 90%;
+    }
+    
     @media (max-width:459px) {
         .container{
             width: 98%;
-        }
-
-        table.centered thead tr th{
-            font-size: 0.8em;
         }
     }
 
@@ -48,22 +50,12 @@
         .container{
             width: 98%;
         }
-
-        table.centered thead tr th{
-            font-size: 0.8em;
-        }
     }    
 
     @media (min-width :768px) and (max-width : 992px) {
-        table.centered thead tr th{
-            font-size: 1em;
-        }
     }
 
     @media (min-width:993px) {
-        table.centered thead tr th{
-            font-size: 1em;
-        }
     }
 }
 

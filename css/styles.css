@@ -8327,12 +8327,8 @@ and open the template in the editor.
         flex: 1 0 auto;
     }***/
   /*** Sticky Footer ***/
-}
-
-.dashboard a.active, .dashboard a.active:hover {
-  background-color: #EFEFEF;
-  border: none;
-  color: #0E7049;
+  /**** Breadcrumbs ****/
+  /**** Breadcrumbs ****/
 }
 
 .dashboard nav {
@@ -8356,6 +8352,30 @@ and open the template in the editor.
 .dashboard footer.page-footer a {
   color: white;
   font-weight: bold;
+}
+
+.dashboard .pagetitle ul {
+  margin-top: 0;
+}
+
+.dashboard #breadcrumb li {
+  list-style-type: none;
+  display: inline;
+  font-size: 130%;
+  color: black;
+}
+
+.dashboard #breadcrumb li a:hover {
+  border: 1px solid #039BE5;
+  padding: 3px;
+}
+
+.dashboard #breadcrumb li a {
+  margin: 0 !important;
+}
+
+.dashboard .pagetitle h4 {
+  margin-bottom: 8px;
 }
 
 @media (max-width: 459px) {
@@ -8590,7 +8610,7 @@ and open the template in the editor.
     margin: 45px 0;
   }
   .listView .container {
-    width: 100%;
+    width: 60% !important;
   }
   .listView .collection .collection-item.avatar {
     padding: 20px 76px 0;
@@ -8603,7 +8623,7 @@ and open the template in the editor.
     margin: 45px 0;
   }
   .listView .container {
-    width: 80%;
+    width: 75%;
   }
   .listView .collection .collection-item.avatar {
     padding: 20px 76px 0;
@@ -8691,14 +8711,12 @@ and open the template in the editor.
 .courseStatistics .nota {
   margin: 15px;
   padding: 5px;
-  font-size: 100%;
   font-weight: bold;
   text-align: right;
 }
 
 .courseStatistics .header {
   font-weight: bold;
-  font-size: 1.5rem;
 }
 
 .courseStatistics h5 {
@@ -8714,32 +8732,22 @@ and open the template in the editor.
   padding: 2px;
 }
 
+.courseStatistics .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  font-size: 90%;
+}
+
 @media (max-width: 459px) {
   .courseStatistics .container {
     width: 98%;
-  }
-  .courseStatistics table.centered thead tr th {
-    font-size: 0.8em;
   }
 }
 
 @media (min-width: 460px) and (max-width: 767px) {
   .courseStatistics .container {
     width: 98%;
-  }
-  .courseStatistics table.centered thead tr th {
-    font-size: 0.8em;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 992px) {
-  .courseStatistics table.centered thead tr th {
-    font-size: 1em;
-  }
-}
-
-@media (min-width: 993px) {
-  .courseStatistics table.centered thead tr th {
-    font-size: 1em;
   }
 }

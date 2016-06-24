@@ -1,11 +1,5 @@
 .dashboard{
     /** Navbar***/
-    a.active, a.active:hover{
-        background-color: $background;
-        border: none;
-        color: $secondary;
-    }
-
     nav{
         background-color: $black;
         box-shadow: none;
@@ -43,7 +37,35 @@
         flex: 1 0 auto;
     }***/
     /*** Sticky Footer ***/ 
-
+    
+    
+    /**** Breadcrumbs ****/
+    .pagetitle ul { 
+        margin-top: 0;
+    }
+    
+    #breadcrumb li{
+        list-style-type: none;
+        display: inline;
+        font-size: 130%;
+        color: black;
+        
+    }
+    
+    #breadcrumb li a:hover{
+        border: 1px solid $blue;
+        padding: 3px;
+    }
+    
+    #breadcrumb li a{
+        margin: 0 !important;
+    }
+    
+    .pagetitle h4{
+        margin-bottom: 8px;
+    }
+    /**** Breadcrumbs ****/
+    
     @media (max-width:459px) {
         /** Navbar***/
         nav{

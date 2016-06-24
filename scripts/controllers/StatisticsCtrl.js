@@ -41,9 +41,9 @@ raoweb.controller('StatisticsCtrl', function ($location, $stateParams, CourseVie
                 if (response !== msg) {
                     //-------- Dropdown --------//
                     $scope.items = [
-                        {text: "Informe en PDF"},
-                        {text: "Gráfico en PNG"},
-                        {text: "Tabla en Excel"}
+                        {text: "Informe en PDF", icon: "fa fa-file-pdf-o"},
+                        {text: "Gráfico en PNG", icon: "fa fa-file-image-o"},
+                        {text: "Tabla en Excel", icon: "fa fa-file-excel-o"}
                     ];
 
                     $('.dropdown-button').dropdown({

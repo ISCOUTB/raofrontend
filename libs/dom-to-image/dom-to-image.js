@@ -435,7 +435,7 @@
                 request.responseType = 'blob';
                 request.timeout = TIMEOUT;
                 request.open('GET', url, true);
-                request.send();
+                //request.send();
 
                 function done() {
                     if (request.readyState !== 4) return;
@@ -458,7 +458,7 @@
                 }
 
                 function fail(message) {
-                    console.error(message);
+                    //console.error(message);
                     resolve('');
                 }
             });

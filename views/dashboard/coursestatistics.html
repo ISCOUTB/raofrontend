@@ -1,87 +1,89 @@
 <div class="container courseStatistics">
-    <div class="card row">
-        <div class="col s12">
-            <div class="card-content" >
-                <div class="pagetitle">
-                    <div class="data-preloader center" ng-show="loading">
-                        <div class="preloader-wrapper big active">
-                            <div class="spinner-layer spinner-blue-only">
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div><div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div><div class="circle-clipper right">
-                                    <div class="circle"></div>
+    <div class="container courseStatistics">
+        <div class="card row">
+            <div class="col s12">
+                <div class="card-content" >
+                    <div class="pagetitle">
+                        <div class="data-preloader center" ng-show="loading">
+                            <div class="preloader-wrapper big active">
+                                <div class="spinner-layer spinner-blue-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div><div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <p>Esto podría demorar un poco</p>
-                    </div>   
-                </div>
-
-                <div ng-hide="loading">
-                    <div class="pagetitle">
-                        <a ui-sref="courseview({course : nrc})" class="left"><i class="fa fa-arrow-circle-left fa-2x"></i></a> 
-                        <h4 class="fontblue">{{subject}} {{nrc}}</h4>
+                            <p>Esto podría demorar un poco</p>
+                        </div>   
                     </div>
 
-                    <div class="card-action">
-                        <!-- Dropdown Trigger -->                            
-                        <a  class="dropdown-button btn waves-effect waves-light red right" href="#" data-activates="options">
-                            <i class="fa fa-download icon_align"></i> Descargar
-                        </a>
-                        <!-- Dropdown Structure -->
+                    <div ng-hide="loading">
+                        <div class="pagetitle">
+                            <h4 class="fontblue">{{subject}} {{nrc}}</h4>
+                            <div ncy-breadcrumb></div>
+                        </div>
 
-                        <ul id="options" class="dropdown-content">
-                            <li ng-repeat="item in items"><a id="{{$index}}" ng-click="setOption($index)" download="" href="#">{{item.text}}</a></li>    
-                        </ul> 
+                        <div class="card-action">
+                            <!-- Dropdown Trigger -->                            
+                            <a  class="dropdown-button btn waves-effect waves-light red right" href="#" data-activates="options">
+                                <i class="fa fa-download icon_align"></i> Descargar
+                            </a>
+                            <!-- Dropdown Structure -->
 
-                        <br><br>
+                            <ul id="options" class="dropdown-content">
+                                <li ng-repeat="item in items"><a id="{{$index}}" ng-click="setOption($index)" download="" href="#"><i class="{{item.icon}}"></i> {{item.text}}</a></li>    
+                            </ul> 
 
-                        <div id="node">
+                            <br><br>
+
+                            <div id="node">
+                                <div class="subtitulos">
+                                    <h5>Gráfica con porcentajes de asistencias</h5>
+                                </div>
+
+                                <div id="attendance_graph"></div>
+
+                                <div class="nota">
+                                    <br>
+                                    <p>* Siendo los porcentajes (%) calculados usando el número de veces que la persona asistió a clase y el número total de veces que se tomó asistencia en el curso</p>
+                                    <br>
+                                </div>
+                            </div>
+
                             <div class="subtitulos">
-                                <h5>Gráfica con porcentajes de asistencias</h5>
+                                <h5>Tabla resumen de asistencias y faltas</h5>
                             </div>
+                            <br>
 
-                            <div id="attendance_graph"></div>
-
+                            <table class="striped centered responsive-table bordered" id="statistics">
+                                <thead class="header"> 
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nombres y Apellidos</th>
+                                        <th>Códigos</th>
+                                        <th>No. asistencias</th>
+                                        <th>No. faltas</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-if="total > 0">
+                                    <tr ng-repeat="s in students">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{s.student_name}} {{s.student_lastname}}</td>
+                                        <td>{{s.student_id}}</td>
+                                        <td>{{s.attendance_value[0].value}}</td>
+                                        <td>{{s.attendance_value[1].value}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
                             <div class="nota">
-                                <br>
-                                <p>* Siendo los porcentajes (%) calculados usando el número de veces que la persona asistió a clase y el número total de veces que se tomó asistencia en el curso</p>
-                                <br>
+                                <p>* Se ha tomado {{total}} veces asistencia en este curso</p>
                             </div>
+                            <br>
                         </div>
-
-                        <div class="subtitulos">
-                            <h5>Tabla resumen de asistencias y faltas</h5>
-                        </div>
-                        <br>
-
-                        <table class="striped centered responsive-table bordered" id="statistics">
-                            <thead class="header"> 
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Nombres y Apellidos</th>
-                                    <th>Códigos</th>
-                                    <th>No. asistencias</th>
-                                    <th>No. faltas</th>
-                                </tr>
-                            </thead>
-                            <tbody ng-if="total > 0">
-                                <tr ng-repeat="s in students">
-                                    <td>{{$index + 1}}</td>
-                                    <td>{{s.student_name}} {{s.student_lastname}}</td>
-                                    <td>{{s.student_id}}</td>
-                                    <td>{{s.attendance_value[0].value}}</td>
-                                    <td>{{s.attendance_value[1].value}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                        <div class="nota">
-                            <p>* Se ha tomado {{total}} veces asistencia en este curso</p>
-                        </div>
-                        <br>
                     </div>
                 </div>
             </div>

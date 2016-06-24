@@ -1,66 +1,68 @@
 <div class="container listView">
-    <div class="card">
-        <div class="card-content">
-            <div class="pagetitle">
-                <div class="data-preloader center" ng-show="loading">
-                    <div class="preloader-wrapper big active">
-                        <div class="spinner-layer spinner-blue-only">
-                            <div class="circle-clipper left">
-                                <div class="circle"></div>
-                            </div><div class="gap-patch">
-                                <div class="circle"></div>
-                            </div><div class="circle-clipper right">
-                                <div class="circle"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>   
-            </div>
-
-            <div ng-hide="loading">
+    <div class="container listView">
+        <div class="card">
+            <div class="card-content">
                 <div class="pagetitle">
-                    <a onclick="window.history.back();" class="left"><i class="fa fa-arrow-circle-left fa-2x icon_align"></i> </a> 
-                    <h4 class="fontblue">{{subject}} {{nrc}}</h4>
-                </div>
-                <h5>Listado de estudiantes</h5>
-
-                <div class="card-action">
-                    <div ng-if="students.length > 0">
-                        <div class="row">
-                            <div class="col s12 m6 l6"> 
-                                <form class="forms forms-inline input-field">
-                                    <input type="text" class="input-big width-50" id="query" ng-model="query">
-                                    <label for="query">Buscar</label>
-                                </form>
-                            </div>
-                            <div class="col s6 offset-m1 m2 offset-l1 l2">
-                                <a class="btn waves-effect waves-light backgroundgreen" ui-sref="studentlist({course : nrc})"><i class="fa fa-check-square-o"></i></a>
-                            </div>
-                            <div class="col s6 m2 l2">
-                                <a class="btn waves-effect waves-light red" ui-sref="coursestatistics({course : nrc})"><i class="fa fa-bar-chart"></i></a>
+                    <div class="data-preloader center" ng-show="loading">
+                        <div class="preloader-wrapper big active">
+                            <div class="spinner-layer spinner-blue-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div><div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div><div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
                             </div>
                         </div>
-                        <div ng-repeat="s in students| filter:query | orderBy:'s.name'">
-                            <div class="collection">	
-                                <div class="collection collection-item avatar">
-                                    <a ui-sref="studentcourseview({course : nrc, student: s.id})">
-                                        <i class="fa fa-users circle red"></i>
-                                        <span class="title">{{s.names}} {{s.lastnames}}</span>
-                                        <p class="black-text break_word">{{s.id}}<br>
-                                            {{s.email}}
-                                        </p>
-                                    </a>    
+                    </div>   
+                </div>
+
+                <div ng-hide="loading">
+                    <div class="pagetitle"> 
+                        <h4 class="fontblue">{{subject}} {{nrc}}</h4>
+                        <div ncy-breadcrumb></div>
+                    </div>
+
+                    <div class="card-action">
+                        <div ng-if="students.length > 0">
+                            <h5>Listado de estudiantes</h5>
+                            <div class="row">
+                                <div class="col s12 m6 l6"> 
+                                    <form class="forms forms-inline input-field">
+                                        <input type="text" class="input-big width-50" id="query" ng-model="query">
+                                        <label for="query">Buscar</label>
+                                    </form>
+                                </div>
+                                <div class="col  offset-s1 s4 offset-m1 m2 offset-l1 l2">
+                                    <a class="btn waves-effect waves-light backgroundgreen" ui-sref="studentlist({course : nrc})"><i class="fa fa-check-square-o"></i></a>
+                                </div>
+                                <div class="col offset-s1 s4 m2 l2">
+                                    <a class="btn waves-effect waves-light red" ui-sref="coursestatistics({course : nrc})"><i class="fa fa-bar-chart"></i></a>
+                                </div>
+                            </div>
+                            <div ng-repeat="s in students| filter:query | orderBy:'s.name'">
+                                <div class="collection">	
+                                    <div class="collection collection-item avatar">
+                                        <a ui-sref="studentcourseview({course : nrc, student: s.id})">
+                                            <i class="fa fa-users circle red"></i>
+                                            <span class="title">{{s.names}} {{s.lastnames}}</span>
+                                            <p class="black-text break_word">{{s.id}}<br>
+                                                {{s.email}}
+                                            </p>
+                                        </a>    
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div ng-show="students_empty">
-                    <div class="warning-box">
-                        <p>
-                            <i class="fa fa-info-circle"></i>
-                            <span> <strong>No hay estudiantes matriculados en el curso</strong></span>
-                        </p>
+                    <div ng-show="students_empty">
+                        <div class="warning-box">
+                            <p>
+                                <i class="fa fa-info-circle"></i>
+                                <span> <strong>No hay estudiantes matriculados en el curso</strong></span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,14 @@
 raoweb.controller('AuthCtrl', function($scope, AuthFactory, LocalStorageFactory, $location) {
+    
+    //Enable tab in form
+    $(":input").on("keydown", function(event) {
+        if (event.which === 13 && !$(this).is(":button, :submit")) {
+            $(this)
+                .nextAll(":input")
+                .first()
+                .focus();
+        }
+    });
     $scope.login = function (user) {
         AuthFactory.login(user)
             .then(function(response) {
